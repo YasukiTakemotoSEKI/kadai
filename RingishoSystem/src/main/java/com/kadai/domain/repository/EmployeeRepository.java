@@ -1,7 +1,8 @@
-package com.kadai.repository;
+package com.kadai.domain.repository;
 
-import com.kadai.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.kadai.domain.entity.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 }

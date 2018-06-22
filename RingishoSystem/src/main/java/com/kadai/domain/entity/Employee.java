@@ -1,4 +1,4 @@
-package com.kadai.entity;
+package com.kadai.domain.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

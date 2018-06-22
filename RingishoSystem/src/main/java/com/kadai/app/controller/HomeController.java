@@ -1,7 +1,9 @@
-package com.kadai.controller;
+package com.kadai.app.controller;
 
-import com.kadai.entity.*;
-import com.kadai.repository.*;
+import com.kadai.domain.entity.Employee;
+import com.kadai.domain.repository.EmployeeRepository;
+import com.kadai.domain.entity.*;
+import com.kadai.domain.repository.*;
 
 import java.util.List;
 
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class AppController {
+public class HomeController {
 	
 	@Autowired
 	EmployeeRepository repository;
