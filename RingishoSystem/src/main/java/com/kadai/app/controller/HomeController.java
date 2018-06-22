@@ -2,8 +2,6 @@ package com.kadai.app.controller;
 
 import com.kadai.domain.entity.Employee;
 import com.kadai.domain.repository.EmployeeRepository;
-import com.kadai.domain.entity.*;
-import com.kadai.domain.repository.*;
 
 import java.util.List;
 
