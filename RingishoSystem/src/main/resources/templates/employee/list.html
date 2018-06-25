@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout}">
+<head>
+<title>稟議書システム</title>
+<meta charset="UTF-8">
+</head>
+<body>
+	<section layout:fragment="content">
+		<h1>ユーザー一覧</h1>
+
+		<tr th:each="employee : ${employees}">
+			<td th:text="${employee.getEmployeeId()}"></td>
+			<td th:text="${employee.getEmployeeName()}"></td>
+			<td>
+				<from method="get">
+					<input type="submit" name="from"　value="編集" />
+					<input type="hidden" name="id"　th:value="${employee.getEmployeeId()}" />
+				</from>
+			</td>
+			<td>
+				<from method="post">
+					<input type="submit" value="削除" />
+					<input type="hidden" value="id"　th:value="${employee.getEmployeeId()}" />
+				</from>
+			</td>
+		</tr>
+	</section>
+
+</body>
+</html>
