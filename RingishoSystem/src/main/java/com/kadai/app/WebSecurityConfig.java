@@ -38,7 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     	http.authorizeRequests()
         // アクセス権限の設定
-    	.antMatchers("/css/**", "/fonts/**", "/js/**").permitAll()
+    	.antMatchers("/css/**", "/fonts/**", "/js/**", "/sessionApp/**").permitAll()
+    	.antMatchers("/sessionAppForm/**").permitAll() //セッション管理用
         // '/admin/'で始まるURLには、'ADMIN'ロールのみアクセス可
         // .antMatchers("/admin/**").hasRole("ADMIN")
         // 他は制限なし

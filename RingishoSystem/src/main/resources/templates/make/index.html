@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout}">
+<head>
+<title>稟議書システム</title>
+<meta charset="UTF-8">
+</head>
+<body>
+	<section layout:fragment="content">
+		<h1>稟議書作成</h1>
+		
+		<p th:if="${validationError}" th:text="${validationError}">validation error</p>
+
+		<form role="form" action="/make/confirm" th:action="@{/make/confirm}" th:object="${sessionAppForm}" method="post">
+			<div class="form-group">
+				<label for="appSubject"><abbr title="required">[必須]</abbr> 件名</label>
+				<input type="text" id="appSubject" name="appSubject" th:field="*{appSubject}" />
+				<span th:if="${#fields.hasErrors('appSubject')}" th:errors="*{appSubject}">error!</span>
+			</div>
+			<div class="form-group">
+				<label for="appContent"><abbr title="required">[必須]</abbr> 内容</label>
+				<textarea type="text" id="appContent" name="appContent" th:field="*{appContent}" ></textarea>
+				<span th:if="${#fields.hasErrors('appContent')}" th:errors="*{appContent}">error!</span>
+			</div>
+			<div class="form-group">
+				<label for="appPrice"><abbr title="required">[必須]</abbr> 申請金額</label>
+				<input type="text" id="appPrice" name="appPrice" th:field="*{appPrice}" />
+				<span th:if="${#fields.hasErrors('appPrice')}" th:errors="*{appPrice}">error!</span>
+			</div>
+			<div class="form-group">
+				<label for="appAttachment"><abbr title="required">[必須]</abbr> 添付書類</label>
+				<textarea type="text" id="appAttachment" name="appAttachment" th:field="*{appAttachment}" ></textarea>
+				<span th:if="${#fields.hasErrors('appAttachment')}" th:errors="*{appAttachment}">error!</span>
+			</div>
+			<div class="form-group">
+				<label for="appComment">コメント／所見</label>
+				<textarea type="text" id="appComment" name="appComment" th:field="*{appComment}" ></textarea>
+				<span th:if="${#fields.hasErrors('appComment')}" th:errors="*{appComment}">error!</span>
+			</div>
+			<button type="submit" name="confirm" class="btn btn-default">入力内容確認</button>
+		</form>
+	</section>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout}">
+<head>
+<title>稟議書システム</title>
+<meta charset="UTF-8">
+</head>
+<body>
+	<section layout:fragment="content">
+		<h1>稟議書作成</h1>
+		
+		<p th:if="${validationError}" th:text="${validationError}">validation error</p>
+
+		<p>登録完了しました</p>
+	</section>
+</body>
+</html>
