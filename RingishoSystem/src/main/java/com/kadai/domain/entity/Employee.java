@@ -1,5 +1,7 @@
 package com.kadai.domain.entity;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,14 +9,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 @Entity
 @Table(name="Employee")
-public class Employee {
-	
+public class Employee implements UserDetails {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "employee_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long employeeId;
+	private int employeeId;
 	
 	@Column(name = "department_id")
 	private int departmentId;
@@ -22,8 +28,8 @@ public class Employee {
 	@Column(name = "division_id")
 	private int divisionId;
 	
-	@Column(name = "class_id")
-	private int classId;
+	@Column(name = "position_id")
+	private int positionId;
 	
 	@Column(name = "employee_no")
 	private int employeeNo;
@@ -37,11 +43,11 @@ public class Employee {
 	public Employee() {
 	}
 	
-	public Employee(int departmentId, int divisionId, int classId, int employeeNo, String employeeName, String employeePassword) {
+	public Employee(int departmentId, int divisionId, int positionId, int employeeNo, String employeeName, String employeePassword) {
 		this();
 		this.departmentId = departmentId;
 		this.divisionId = divisionId;
-		this.classId = classId;
+		this.positionId = positionId;
 		this.employeeNo = employeeNo;
 		this.employeeName = employeeName;
 		this.employeePassword = employeePassword;
@@ -51,7 +57,7 @@ public class Employee {
 		return employeeId;
 	}
 	
-	public void setEmployeeId(long employeeId) {
+	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
 	}
 	
@@ -72,11 +78,11 @@ public class Employee {
 	}
 	
 	public int getClassId() {
-		return classId;
+		return positionId;
 	}
 	
-	public void setClassId(int classId) {
-		this.classId = classId;
+	public void setClassId(int positionId) {
+		this.positionId = positionId;
 	}
 	
 	public int getEmployeeNo() {
@@ -101,5 +107,40 @@ public class Employee {
 	
 	public void setEmployeePassword(String employeePassword) {
 		this.employeePassword = employeePassword;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return null;
+	}
+
+	@Override
+	public String getPassword() {
+		return employeePassword;
+	}
+
+	@Override
+	public String getUsername() {
+		return employeeName;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
 	}
 }

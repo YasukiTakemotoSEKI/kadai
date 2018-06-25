@@ -11,8 +11,8 @@ public class HomeController {
 	@Autowired
 	EmployeeRepository repository;
 	
-	@RequestMapping("/")
-	public String sample() {
+	@RequestMapping("/home")
+	public String home() {
 		return "/home/home";
 	}
 }

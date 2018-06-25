@@ -1,49 +1,48 @@
+DROP TABLE employee;
+
 create table IF NOT EXISTS employee (
     employee_id INTEGER primary key auto_increment,
     department_id INTEGER,
     division_id INTEGER,
-    class_id INTEGER,
+    position_id INTEGER,
     employee_no INTEGER,
     employee_name varchar(200),
     employee_password varchar(200)
 );
 
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (1,1,3,1131,'1課 営業 部長さん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (1,1,2,1122,'1課 営業 課長Aさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (1,1,2,1123,'1課 営業 課長Bさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (1,1,1,1114,'1課 営業 ヒラAさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (1,1,1,1115,'1課 営業 ヒラBさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (1,1,1,1116,'1課 営業 ヒラCさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (1,2,3,1231,'1課 営業 部長さん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (1,2,2,1222,'1課 営業 課長Aさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (1,2,2,1223,'1課 営業 課長Bさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (1,2,1,1214,'1課 営業 ヒラAさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (1,2,1,1215,'1課 営業 ヒラBさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (1,2,1,1216,'1課 営業 ヒラCさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (2,1,3,2131,'2課 総務 部長さん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (2,1,2,2122,'2課 総務 課長Aさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (2,1,2,2123,'2課 総務 課長Bさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (2,1,1,2114,'2課 総務 ヒラAさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (2,1,1,2115,'2課 総務 ヒラBさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (2,1,1,2116,'2課 総務 ヒラCさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (2,2,3,2231,'2課 総務 部長さん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (2,2,2,2222,'2課 総務 課長Aさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (2,2,2,2223,'2課 総務 課長Bさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (2,2,1,2214,'2課 総務 ヒラAさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (2,2,1,2215,'2課 総務 ヒラBさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (2,2,1,2216,'2課 総務 ヒラCさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (3,1,2,3121,'3課 製造 部長さん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (3,1,3,3132,'3課 製造 課長Aさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (3,1,2,3123,'3課 製造 課長Bさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (3,1,2,3124,'3課 製造 ヒラAさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (3,1,1,3115,'3課 製造 ヒラBさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (3,1,1,3116,'3課 製造 ヒラCさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (3,2,3,3231,'3課 製造 部長さん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (3,2,2,3222,'3課 製造 課長Aさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (3,2,2,3223,'3課 製造 課長Bさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (3,2,1,3214,'3課 製造 ヒラAさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (3,2,1,3215,'3課 製造 ヒラBさん','123');
-insert into employee (department_id, division_id, class_id, employee_no, employee_name, employee_password) values (3,2,1,3216,'3課 製造 ヒラCさん','123');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,1,3,1131,'butyou@eigyou','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,1,2,1122,'katyoua@eigyou1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,1,2,1123,'katyoub@eigyou1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,1,1,1114,'hiraa@eigyou1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,1,1,1115,'hirab@eigyou1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,1,1,1116,'hirac@eigyou1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,2,2,1222,'katyoua@eigyou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,2,2,1223,'katyoub@eigyou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,2,1,1214,'hiraa@eigyou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,2,1,1215,'hirab@eigyou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,2,1,1216,'hirac@eigyou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,1,3,2131,'butyou@soumu','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,1,2,2122,'katyoua@soumu1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,1,2,2123,'katyoub@soumu1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,1,1,2114,'hiraa@soumu1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,1,1,2115,'hirab@soumu1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,1,1,2116,'hirac@soumu1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,2,2,2222,'katyoua@soumu2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,2,2,2223,'katyoub@soumu2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,2,1,2214,'hiraa@soumu2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,2,1,2215,'hirab@soumu2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,2,1,2216,'hirac@soumu2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,1,2,3121,'butyou@seizou','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,1,3,3132,'katyoua@seizou1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,1,2,3123,'katyoub@seizou1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,1,2,3124,'hiraa@seizou1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,1,1,3115,'hirab@seizou1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,1,1,3116,'hirac@seizou1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,2,2,3222,'katyoua@seizou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,2,2,3223,'katyoub@seizou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,2,1,3214,'hiraa@seizou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,2,1,3215,'hirab@seizou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,2,1,3216,'hirac@seizou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 
 
 
@@ -77,14 +76,14 @@ create table IF NOT EXISTS appflow (
 insert into appflow (appflow_id, app_id,flow_id,employee_id,appflow_flg,appflow_order) values (1,1,1,1,true,0);
 
 
-create table IF NOT EXISTS class (
-    class_id INTEGER primary key,
-    class_name varchar(200)
+create table IF NOT EXISTS position (
+    position_id INTEGER primary key,
+    position_name varchar(200)
 );
 
-insert into class (class_id, class_name) values (1,'社員');
-insert into class (class_id, class_name) values (2,'課長');
-insert into class (class_id, class_name) values (3,'部長');
+insert into position (position_id, position_name) values (1,'社員');
+insert into position (position_id, position_name) values (2,'課長');
+insert into position (position_id, position_name) values (3,'部長');
 
 
 create table IF NOT EXISTS department (
@@ -109,16 +108,16 @@ insert into division (division_id, division_name) values (2,'二課');
 create table IF NOT EXISTS flow (
     flow_id INTEGER primary key,
     price_id INTEGER,
-    class_id INTEGER,
+    position_id INTEGER,
     flow_order INTEGER
     
 );
 
-insert into flow (flow_id, price_id,class_id,flow_order) values (1,1,1,0);
-insert into flow (flow_id, price_id,class_id,flow_order) values (2,1,2,1);
-insert into flow (flow_id, price_id,class_id,flow_order) values (3,2,1,0);
-insert into flow (flow_id, price_id,class_id,flow_order) values (4,2,2,1);
-insert into flow (flow_id, price_id,class_id,flow_order) values (5,2,3,2);
+insert into flow (flow_id, price_id,position_id,flow_order) values (1,1,1,0);
+insert into flow (flow_id, price_id,position_id,flow_order) values (2,1,2,1);
+insert into flow (flow_id, price_id,position_id,flow_order) values (3,2,1,0);
+insert into flow (flow_id, price_id,position_id,flow_order) values (4,2,2,1);
+insert into flow (flow_id, price_id,position_id,flow_order) values (5,2,3,2);
 
 
 create table IF NOT EXISTS price (

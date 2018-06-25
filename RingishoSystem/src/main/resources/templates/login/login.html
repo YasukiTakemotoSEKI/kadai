@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout}">
+<head>
+<title>稟議書システム</title>
+<meta charset="UTF-8">
+</head>
+	<body>
+		<section layout:fragment="content">
+		    <div th:if="${param.error}">
+		      	パスワードが違います。
+		    </div>
+		    <div th:if="${param.logout}">
+	      		You have been logged out.
+		    </div>
+		    <form th:action="@{/login}" method="post">
+				<div><label>ユーザー名: <input type="text" name="username"/></label></div>
+				<div><label>パスワード: <input type="password" name="password"/></label></div>
+				<div><input type="submit" value="Sign In"/></div>
+		    </form>
+		</section>
+	</body>
+</html>

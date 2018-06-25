@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>稟議書システム</title>
-	</head>
-	
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout}">
+<head>
+<title>稟議書システム</title>
+<meta charset="UTF-8">
+</head>
 	<body>
-		<h1>稟議書システム</h1>
-		<p><a href="">ログインページ</a></p>
+		<section layout:fragment="content">
+			<h1>稟議書システム</h1>
+			<p><a href="">ログインページ</a></p>
+		</section>
 	</body>
 	
 </html>
