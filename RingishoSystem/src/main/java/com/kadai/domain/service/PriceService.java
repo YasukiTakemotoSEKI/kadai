@@ -1,18 +1,25 @@
 package com.kadai.domain.service;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.kadai.domain.entity.App;
 import com.kadai.domain.entity.Price;
 import com.kadai.domain.repository.PriceRepository;
 
 @Service
 @Transactional
-public class PriceService {
+public class PriceService implements UserDetailsService{
 	
 	@Autowired
 	PriceRepository priceRepository;
@@ -39,6 +46,13 @@ public class PriceService {
     	
     public void delete(Integer price){	
     	priceRepository.deleteById(price);
-    }	
+    }
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}	
+    
 
 }
