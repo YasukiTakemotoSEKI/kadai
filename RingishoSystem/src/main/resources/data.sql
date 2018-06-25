@@ -48,7 +48,7 @@ insert into employee (department_id, division_id, position_id, employee_no, empl
 
 
 create table IF NOT EXISTS app (
-    app_id INTEGER primary key,
+    app_id INTEGER primary key auto_increment,
     employee_id INTEGER,
     department_id INTEGER,
     division_id INTEGER,
@@ -67,7 +67,7 @@ insert into app (app_id, employee_id,department_id,division_id,price_id,app_flg,
 
 
 create table IF NOT EXISTS appflow (
-    appflow_id INTEGER primary key,
+    appflow_id INTEGER primary key auto_increment,
     app_id INTEGER,
     flow_id INTEGER,
     employee_id INTEGER,
@@ -79,7 +79,7 @@ insert into appflow (appflow_id, app_id,flow_id,employee_id,appflow_flg,appflow_
 
 
 create table IF NOT EXISTS position (
-    position_id INTEGER primary key,
+    position_id INTEGER primary key auto_increment,
     position_name varchar(200)
 );
 
@@ -89,7 +89,7 @@ insert into position (position_id, position_name) values (3,'部長');
 
 
 create table IF NOT EXISTS department (
-    department_id INTEGER primary key,
+    department_id INTEGER primary key auto_increment,
     department_name varchar(200)
 );
 
@@ -99,7 +99,7 @@ insert into department (department_id, department_name) values (3,'製造部');
 
 
 create table IF NOT EXISTS division (
-    division_id INTEGER primary key,
+    division_id INTEGER primary key auto_increment,
     division_name varchar(200)
 );
 
@@ -108,7 +108,7 @@ insert into division (division_id, division_name) values (2,'二課');
 
 
 create table IF NOT EXISTS flow (
-    flow_id INTEGER primary key,
+    flow_id INTEGER primary key auto_increment,
     price_id INTEGER,
     position_id INTEGER,
     flow_order INTEGER
@@ -123,7 +123,7 @@ insert into flow (flow_id, price_id,position_id,flow_order) values (5,2,3,2);
 
 
 create table IF NOT EXISTS price (
-    price_id INTEGER primary key,
+    price_id INTEGER primary key auto_increment,
     price_value INTEGER
 );
 

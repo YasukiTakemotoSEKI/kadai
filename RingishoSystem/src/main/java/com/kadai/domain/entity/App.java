@@ -14,7 +14,7 @@ public class App {
 	@Id
 	@Column(name = "app_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int appId;
+	private int appId=0;
 	
 	@Column(name = "employee_id")
 	private int employeeId;
@@ -57,6 +57,7 @@ public class App {
 	
 	public App(int employeeId, int departmentId, int divisionId, int priceId, boolean appFlg, String appSubject, String appContent, int appPrice, String appAttachment, String appComment, String appStartDate, String appEndDate) {
 		this();
+//		this.appId = appId;
 		this.employeeId = employeeId;
 		this.departmentId = departmentId;
 		this.divisionId = divisionId;
@@ -93,6 +94,14 @@ public class App {
 	
 	public void setDepartmentId(int departmentId) {
 		this.departmentId = departmentId;
+	}
+	
+	public int getPriceId() {
+		return priceId;
+	}
+	
+	public void setPriceId(int priceId) {
+		this.priceId = priceId;
 	}
 	
 	public int getDivisionId() {
