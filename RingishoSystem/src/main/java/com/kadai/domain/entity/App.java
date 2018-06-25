@@ -37,6 +37,9 @@ public class App {
 	@Column(name = "app_content")
 	private String appContent;
 	
+	@Column(name = "app_price")
+	private int appPrice;
+	
 	@Column(name = "app_attachment")
 	private String appAttachment;
 	
@@ -52,7 +55,7 @@ public class App {
 	public App() {
 	}
 	
-	public App(int employeeId, int departmentId, int divisionId, int priceId, boolean appFlg, String appSubject, String appContent, String appAttachment, String appComment, String appStartDate, String appEndDate) {
+	public App(int employeeId, int departmentId, int divisionId, int priceId, boolean appFlg, String appSubject, String appContent, int appPrice, String appAttachment, String appComment, String appStartDate, String appEndDate) {
 		this();
 		this.employeeId = employeeId;
 		this.departmentId = departmentId;
@@ -61,6 +64,7 @@ public class App {
 		this.appFlg = appFlg;
 		this.appSubject = appSubject;
 		this.appContent = appContent;
+		this.appPrice = appPrice;
 		this.appAttachment = appAttachment;
 		this.appComment = appComment;
 		this.appStartDate = appStartDate;
@@ -115,13 +119,21 @@ public class App {
 		this.appSubject = appSubject;
 	}
 	
-	public String getappContent() {	
+	public String getAppContent() {	
 		return appContent;
 	}	
 		
-	public void setappContent(String appContent) {	
+	public void setAppContent(String appContent) {	
 		this.appContent = appContent;
 	}	
+	
+	public int getAppPrice() {
+		return appPrice;
+	}
+	
+	public void setAppPrice(int appPrice) {
+		this.appPrice = appPrice;
+	}
 	
 	public String getAppAttachment() {	
 		return appAttachment;

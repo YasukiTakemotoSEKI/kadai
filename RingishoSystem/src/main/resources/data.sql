@@ -1,4 +1,5 @@
 DROP TABLE employee;
+DROP TABLE app;
 
 create table IF NOT EXISTS employee (
     employee_id INTEGER primary key auto_increment,
@@ -55,13 +56,14 @@ create table IF NOT EXISTS app (
     app_flg BOOLEAN,
     app_subject varchar(255),
     app_content CLOB,
+    app_price INTEGER,
     app_attachment CLOB,
     app_comment CLOB,
     app_start_date DATE,
     app_end_date DATE
 );
 
-insert into app (app_id, employee_id,department_id,division_id,price_id,app_flg,app_subject,app_content,app_attachment,app_comment,app_start_date,app_end_date) values (1,1,1,1,1,false,'稟議システムの決済について','稟議書システムの決済をお願いいたします。','http://tenpusiryooo','とにかくお願いします。',DATE'2018-06-28',null);
+insert into app (app_id, employee_id,department_id,division_id,price_id,app_flg,app_subject,app_content,app_price,app_attachment,app_comment,app_start_date,app_end_date) values (1,1,1,1,1,false,'稟議システムの決済について','稟議書システムの決済をお願いいたします。',5000,'http://tenpusiryooo','とにかくお願いします。',DATE'2018-06-28',null);
 
 
 create table IF NOT EXISTS appflow (

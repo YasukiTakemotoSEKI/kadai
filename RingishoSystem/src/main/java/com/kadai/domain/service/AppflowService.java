@@ -36,7 +36,7 @@ public class AppflowService {
     public Appflow update(Appflow appflow){		
         return appflowRepository.save(appflow);		
     }		
-    		
+
     public void delete(Integer appflow){		
     	appflowRepository.deleteById(appflow);	
     }		
