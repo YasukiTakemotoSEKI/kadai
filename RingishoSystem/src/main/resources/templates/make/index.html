@@ -9,33 +9,35 @@
 	<section layout:fragment="content">
 		<h1>稟議書作成</h1>
 		
-		<p th:if="${validation_message}" th:text="${validation_message}">validation error</p>
+		<div class="alert alert-danger" role="alert" th:if="${validation_message}" th:text="${validation_message}">
+			validation error
+		</div>
 
 		<form role="form" action="/make/confirm" th:action="@{/make/confirm}" th:object="${sessionAppForm}" method="post">
 			<div class="form-group">
-				<label for="appSubject"><abbr title="required">[必須]</abbr> 件名</label>
+				<label for="appSubject"><abbr title="required" class="text-danger">[必須]</abbr> 件名</label>
 				<input type="text" id="appSubject" class="form-control" name="appSubject" th:field="*{appSubject}" />
-				<span th:if="${#fields.hasErrors('appSubject')}" th:errors="*{appSubject}">error!</span>
+				<span th:if="${#fields.hasErrors('appSubject')}" th:errors="*{appSubject}" class="text-danger">error!</span>
 			</div>
 			<div class="form-group">
-				<label for="appContent"><abbr title="required">[必須]</abbr> 内容</label>
-				<textarea type="text" id="appContent" class="form-control" name="appContent" th:field="*{appContent}" rows="5" ></textarea>
-				<span th:if="${#fields.hasErrors('appContent')}" th:errors="*{appContent}">error!</span>
+				<label for="appContent"><abbr title="required" class="text-danger">[必須]</abbr> 内容</label>
+				<textarea type="text" id="appContent" class="form-control" name="appContent" th:field="*{appContent}" rows="10" ></textarea>
+				<span th:if="${#fields.hasErrors('appContent')}" th:errors="*{appContent}" class="text-danger">error!</span>
 			</div>
 			<div class="form-group">
-				<label for="appPrice"><abbr title="required">[必須]</abbr> 申請金額</label>
+				<label for="appPrice"><abbr title="required" class="text-danger">[必須]</abbr> 申請金額</label>
 				<input type="text" id="appPrice" class="form-control" name="appPrice" th:field="*{appPrice}" />
-				<span th:if="${#fields.hasErrors('appPrice')}" th:errors="*{appPrice}">error!</span>
+				<span th:if="${#fields.hasErrors('appPrice')}" th:errors="*{appPrice}" class="text-danger">error!</span>
 			</div>
 			<div class="form-group">
-				<label for="appAttachment"><abbr title="required">[必須]</abbr> 添付書類</label>
+				<label for="appAttachment"><abbr title="required" class="text-danger">[必須]</abbr> 添付書類</label>
 				<textarea type="text" id="appAttachment" class="form-control" name="appAttachment" th:field="*{appAttachment}" rows="5" ></textarea>
-				<span th:if="${#fields.hasErrors('appAttachment')}" th:errors="*{appAttachment}">error!</span>
+				<span th:if="${#fields.hasErrors('appAttachment')}" th:errors="*{appAttachment}" class="text-danger">error!</span>
 			</div>
 			<div class="form-group">
 				<label for="appComment">コメント／所見</label>
-				<textarea type="text" id="appComment" class="form-control" name="appComment" th:field="*{appComment}" rows="5" ></textarea>
-				<span th:if="${#fields.hasErrors('appComment')}" th:errors="*{appComment}">error!</span>
+				<textarea type="text" id="appComment" class="form-control" name="appComment" th:field="*{appComment}" rows="10" ></textarea>
+				<span th:if="${#fields.hasErrors('appComment')}" th:errors="*{appComment}" class="text-danger">error!</span>
 			</div>
 			<button type="submit" name="confirm" class="btn btn-default">入力内容確認</button>
 		</form>
