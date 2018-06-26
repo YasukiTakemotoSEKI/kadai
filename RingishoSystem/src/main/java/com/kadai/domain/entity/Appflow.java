@@ -22,8 +22,8 @@ public class Appflow {
 	@Column(name = "flow_id")
 	private int flowId;
 	
-	@Column(name = "employee_id")
-	private int employeeId;
+	@Column(name = "position_id")
+	private int positionId;
 	
 	@Column(name = "appflow_flg")
 	private boolean appflowFlg;
@@ -34,11 +34,11 @@ public class Appflow {
 	public Appflow() {
 	}
 	
-	public Appflow(int appId, int flowId, int employeeId, boolean appflowFlg, int appflowOrder) {
+	public Appflow(int appId, int flowId, int positionId, boolean appflowFlg, int appflowOrder) {
 		this();
 		this.appId = appId;
 		this.flowId = flowId;
-		this.employeeId = employeeId;
+		this.positionId = positionId;
 		this.appflowFlg = appflowFlg;
 		this.appflowOrder = appflowOrder;
 		
@@ -68,12 +68,12 @@ public class Appflow {
 		this.flowId = flowId;
 	}	
 	
-	public int getEmployeeId() {	
-		return employeeId;
+	public int getPositionId() {	
+		return positionId;
 	}	
 		
-	public void setEmployeeId(int employeeId) {	
-		this.employeeId = employeeId;
+	public void setPositionId(int positionId) {	
+		this.positionId = positionId;
 	}	
 	
 	public boolean getappflowFlg() {	

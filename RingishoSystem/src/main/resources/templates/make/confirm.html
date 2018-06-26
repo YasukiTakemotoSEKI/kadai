@@ -11,7 +11,7 @@
 		
 		<p>入力内容を確認してください。</p>
 		
-		<form id="sessionAppForm" role="form" action="/make/complete" th:action="@{/make/complete}" th:object="${sessionAppForm}" method="post">
+		<form id="sessionAppForm" role="form" action="/make/generate" th:action="@{/make/generate}" th:object="${sessionAppForm}" method="post">
 			<div class="form-group">
 				<label for="appSubject">件名</label>
 				<p th:text="*{appSubject}"></p>

@@ -12,7 +12,7 @@ create table IF NOT EXISTS employee (
     employee_password varchar(200)
 );
 
-insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,1,3,1131,'butyou@eigyou','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,0,3,1131,'butyou@eigyou','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,1,2,1122,'katyoua@eigyou1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,1,2,1123,'katyoub@eigyou1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,1,1,1114,'hiraa@eigyou1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
@@ -23,7 +23,7 @@ insert into employee (department_id, division_id, position_id, employee_no, empl
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,2,1,1214,'hiraa@eigyou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,2,1,1215,'hirab@eigyou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (1,2,1,1216,'hirac@eigyou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
-insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,1,3,2131,'butyou@soumu','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,0,3,2131,'butyou@soumu','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,1,2,2122,'katyoua@soumu1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,1,2,2123,'katyoub@soumu1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,1,1,2114,'hiraa@soumu1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
@@ -34,7 +34,7 @@ insert into employee (department_id, division_id, position_id, employee_no, empl
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,2,1,2214,'hiraa@soumu2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,2,1,2215,'hirab@soumu2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (2,2,1,2216,'hirac@soumu2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
-insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,1,2,3121,'butyou@seizou','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
+insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,0,2,3121,'butyou@seizou','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,1,3,3132,'katyoua@seizou1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,1,2,3123,'katyoub@seizou1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,1,2,3124,'hiraa@seizou1','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
@@ -45,8 +45,6 @@ insert into employee (department_id, division_id, position_id, employee_no, empl
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,2,1,3214,'hiraa@seizou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,2,1,3215,'hirab@seizou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,2,1,3216,'hirac@seizou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
-
-
 
 create table IF NOT EXISTS app (
     app_id INTEGER primary key auto_increment,
@@ -60,24 +58,18 @@ create table IF NOT EXISTS app (
     app_price INTEGER,
     app_attachment CLOB,
     app_comment CLOB,
-    app_start_date DATE,
-    app_end_date DATE
+    app_start_date varchar(255),
+    app_end_date varchar(255)
 );
-
-insert into app (app_id, employee_id,department_id,division_id,price_id,app_flg,app_subject,app_content,app_price,app_attachment,app_comment,app_start_date,app_end_date) values (1,1,1,1,1,false,'稟議システムの決済について','稟議書システムの決済をお願いいたします。',5000,'http://tenpusiryooo','とにかくお願いします。',DATE'2018-06-28',null);
-
 
 create table IF NOT EXISTS appflow (
     appflow_id INTEGER primary key auto_increment,
     app_id INTEGER,
     flow_id INTEGER,
-    employee_id INTEGER,
+    position_id INTEGER,
     appflow_flg BOOLEAN,
     appflow_order INTEGER
 );
-
-insert into appflow (appflow_id, app_id,flow_id,employee_id,appflow_flg,appflow_order) values (1,1,1,1,true,0);
-
 
 create table IF NOT EXISTS position (
     position_id INTEGER primary key auto_increment,
@@ -116,11 +108,9 @@ create table IF NOT EXISTS flow (
     
 );
 
-insert into flow (flow_id, price_id,position_id,flow_order) values (1,1,1,0);
-insert into flow (flow_id, price_id,position_id,flow_order) values (2,1,2,1);
-insert into flow (flow_id, price_id,position_id,flow_order) values (3,2,1,0);
-insert into flow (flow_id, price_id,position_id,flow_order) values (4,2,2,1);
-insert into flow (flow_id, price_id,position_id,flow_order) values (5,2,3,2);
+insert into flow (flow_id, price_id,position_id,flow_order) values (1,1,2,0);
+insert into flow (flow_id, price_id,position_id,flow_order) values (2,2,2,0);
+insert into flow (flow_id, price_id,position_id,flow_order) values (3,2,3,1);
 
 
 create table IF NOT EXISTS price (
