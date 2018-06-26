@@ -8,6 +8,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -25,10 +26,15 @@ public class PriceService implements UserDetailsService{
 	PriceRepository priceRepository;
 	
     public List<Price> findAll(){	
-        return priceRepository.findAll();	
+        return priceRepository.findAll(sortByPriceValueAsc());	
     }
     
-    public Price findOne(Integer priceId){	
+    private Sort sortByPriceValueAsc() {
+		// TODO Auto-generated method stub
+		return new Sort(Sort.Direction.ASC,"priceValue");
+	}
+
+	public Price findOne(Integer priceId){	
         return priceRepository.findById(priceId).get();	
     }	
     	
@@ -43,6 +49,7 @@ public class PriceService implements UserDetailsService{
     public void delete(Integer price){	
     	priceRepository.deleteById(price);
     }
+
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

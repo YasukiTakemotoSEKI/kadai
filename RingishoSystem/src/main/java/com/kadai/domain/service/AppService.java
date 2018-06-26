@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kadai.domain.entity.App;
+import com.kadai.domain.entity.Appflow;
+import com.kadai.domain.entity.Flow;
 import com.kadai.domain.entity.Price;
 import com.kadai.domain.repository.AppRepository;
 
@@ -22,6 +24,15 @@ public class AppService {
 	
 	@Autowired
 	AppRepository appRepository;
+	
+	@Autowired
+	PriceService priceservice;
+	
+	@Autowired
+	FlowService flowservice;
+	
+	@Autowired
+	AppflowService appflowservice;
 	
     public List<App> findAll(){	
         return appRepository.findAll();	
@@ -41,24 +52,38 @@ public class AppService {
     	
     public void delete(Integer app){	
     	appRepository.deleteById(app);
-    }	
+    }
+  
 
     /**
      * 申請金額のチェック
-     * 戻り値 int priceId
+     * 戻り値
      * 処理が二回呼ばれる？不都合あれば修正
      */
-    public Integer searchPrice(Integer appPrice,List<Price> tableAll) {
+    public void searchPrice(App app) {
+		int appPrice = app.getAppPrice();
+		// //Priceテーブルを昇順で取得
+		List<Price> priceTableAll = new ArrayList<Price>(priceservice.findAll());
     	//申請金額（appPrice）が閾値（PriceValue）より低ければpriceId取得
     	int priceId = 0;
-    	for (Price p:tableAll) {
+    	for (Price p:priceTableAll) {
     		if(appPrice <p.getPriceValue()) {
     			priceId = p.getPriceId();
-    			
     			break;
     		}
     	}
-    	return priceId;
+		app.setPriceId(priceId);
+		create(app);
+		// priceIdごとに承認フロー(flow)レコード呼び出し・(appflow)のレコード作成。
+		List<Flow> flowTableAll = new ArrayList<Flow>(flowservice.findByPriceId(priceId));
+		for(Flow f:flowTableAll){
+			Appflow appflow = new Appflow();
+			appflow.setappId(app.getAppId());
+			appflow.setappFlowId(f.getFlowId());
+			appflow.setEmployeeId(app.getEmployeeId());
+			appflow.setappflowFlg(false);
+			appflow.setAppflowOrder(f.getFlowOrder());
+			appflowservice.create(appflow);
+		}
     }
 }
-
