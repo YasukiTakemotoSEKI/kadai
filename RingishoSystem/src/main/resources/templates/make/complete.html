@@ -9,9 +9,10 @@
 	<section layout:fragment="content">
 		<h1>稟議書作成</h1>
 		
-		<p th:if="${validationError}" th:text="${validationError}">validation error</p>
+		<p th:if="${validation_message}" th:text="${validation_message}">validation error</p>
 
 		<p>登録完了しました</p>
+		<p><a href="/" class="btn btn-back">トップへ戻る</a></p>
 	</section>
 </body>
 </html>

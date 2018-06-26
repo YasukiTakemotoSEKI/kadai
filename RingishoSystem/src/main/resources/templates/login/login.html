@@ -14,9 +14,17 @@
 	      		You have been logged out.
 		    </div>
 		    <form th:action="@{/login}" method="post">
-				<div><label>ユーザー名: <input type="text" name="username"/></label></div>
-				<div><label>パスワード: <input type="password" name="password"/></label></div>
-				<div><input type="submit" value="Sign In"/></div>
+				<div class="form-group">
+					<label>ユーザー名</label>
+					<input type="text" class="form-control" name="username"/>
+				</div>
+				<div class="form-group">
+					<label>パスワード</label>
+					<input type="password" class="form-control" name="password"/>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">ログイン</button>
+				</div>
 		    </form>
 		</section>
 	</body>

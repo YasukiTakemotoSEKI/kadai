@@ -1,4 +1,4 @@
-package com.kadai.app;
+package com.kadai.app.handler;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,16 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 @ControllerAdvice
-public class ErrorPageController {
-	/**
-     * General Error Handling
-     */
-    @ExceptionHandler(Exception.class)
-    public ModelAndView handleError(HttpServletRequest request, Exception e)   {
-        Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Request: " + request.getRequestURL() + " raised " + e);
-        return new ModelAndView("error"); // templates/error/error.html
-    }
-    
+public class HttpExceptionResolver {
     /**
      * 404 Page Not Found
      */
