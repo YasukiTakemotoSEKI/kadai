@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.kadai.domain.entity.App;
 import com.kadai.domain.entity.Appflow;
+import com.kadai.domain.entity.Employee;
 import com.kadai.domain.entity.Flow;
 import com.kadai.domain.entity.Price;
 import com.kadai.domain.repository.AppRepository;
@@ -33,6 +34,9 @@ public class AppService {
 	
 	@Autowired
 	AppflowService appflowservice;
+	
+	@Autowired
+	EmployeeService employeeservice;
 	
     public List<App> findAll(){	
         return appRepository.findAll();	
@@ -74,14 +78,19 @@ public class AppService {
     	}
 		app.setPriceId(priceId);
 		create(app);
+		
+		//承認者データの取得
+		Employee applicant = employeeservice.findOne(app.getEmployeeId());
+		
 		// priceIdごとに承認フロー(flow)レコード呼び出し・(appflow)のレコード作成。
 		List<Flow> flowTableAll = new ArrayList<Flow>(flowservice.findByPriceId(priceId));
 		for(Flow f:flowTableAll){
+			//登録処理
 			Appflow appflow = new Appflow();
 			appflow.setappId(app.getAppId());
-			appflow.setappFlowId(f.getFlowId());
-			appflow.setEmployeeId(app.getEmployeeId());
-			appflow.setappflowFlg(false);
+			appflow.setFlowId(f.getFlowId());
+			appflow.setPositionId(f.getPositionId());
+			appflow.setappflowFlg(true);
 			appflow.setAppflowOrder(f.getFlowOrder());
 			appflowservice.create(appflow);
 		}
