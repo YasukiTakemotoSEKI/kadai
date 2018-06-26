@@ -53,7 +53,7 @@ public class Employee implements UserDetails {
 		this.employeePassword = employeePassword;
 	}
 	
-	public long getEmployeeId() {
+	public int getEmployeeId() {
 		return employeeId;
 	}
 	
