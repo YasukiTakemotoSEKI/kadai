@@ -9,31 +9,31 @@
 	<section layout:fragment="content">
 		<h1>稟議書作成</h1>
 		
-		<p th:if="${validation_message}" th:text="${validation_message}">validation error</p>
-
+		<p>入力内容を確認してください。</p>
+		
 		<form id="sessionAppForm" role="form" action="/make/complete" th:action="@{/make/complete}" th:object="${sessionAppForm}" method="post">
 			<div class="form-group">
-				<p>件名</p>
+				<label for="appSubject">件名</label>
 				<p th:text="*{appSubject}"></p>
 			</div>
 			<div class="form-group">
-				<p>内容</p>
+				<label for="appContent">内容</label>
 				<p th:text="*{appContent}"></p>
 			</div>
 			<div class="form-group">
-				<p>申請金額</p>
+				<label for="appPrice">申請金額</label>
 				<p th:text="*{appPrice}"></p>
 			</div>
 			<div class="form-group">
-				<p>添付書類</p>
+				<label for="appAttachment">添付書類</label>
 				<p th:text="*{appAttachment}"></p>
 			</div>
 			<div class="form-group" th:if="!*{#strings.isEmpty(appComment)}">
-				<p>コメント／所見</p>
+				<label for="appComment">コメント／所見</label>
 				<p th:text="*{appComment}"></p>
 			</div>
-			<button type="submit" name="back" class="btn btn-back">戻る</button>
-			<button type="submit" name="complete" class="btn btn-complete">送信</button>
+			<button type="submit" name="back" class="btn btn-default">戻る</button>
+			<button type="submit" name="complete" class="btn btn-primary">送信</button>
 		</form>
 	</section>
 	

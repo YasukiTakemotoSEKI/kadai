@@ -54,7 +54,9 @@ public class MakeController {
 	//送信ボタン押下時
 	@RequestMapping(path = "/make/complete", params = "complete", method = RequestMethod.POST)
 	public String complete_send(SessionAppForm sessionAppForm, SessionStatus sessionStatus) {
-		//登録処理
+		/**
+		 * 登録処理
+		 */
 		App app = new App();
 		app.setEmployeeId(sessionAppForm.getEmployeeId());
 		app.setDepartmentId(sessionAppForm.getDepartmentId());
