@@ -17,9 +17,13 @@ import com.kadai.app.form.SessionAppForm;
 import com.kadai.domain.entity.App;
 import com.kadai.domain.entity.Employee;
 import com.kadai.domain.repository.AppflowRepository;
+import com.kadai.domain.repository.EmployeeRepository;
 
 @Controller
 public class ListController {
+	
+	@Autowired
+	EmployeeRepository employeerepository;
 	
 	@RequestMapping("/list")
 	public String index( Principal principal) {
@@ -28,7 +32,6 @@ public class ListController {
 		Employee employee = (Employee)auth.getPrincipal();
 		
 		//未承認一覧の取得
-		
 		
 		return "/make/index";
 	}
