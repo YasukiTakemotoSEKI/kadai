@@ -11,15 +11,10 @@ import com.kadai.domain.entity.Appflow;
 import com.kadai.domain.repository.AppflowRepository;
 
 @Service
-@Transactional
 public class AppflowService {
 	
 	@Autowired	
 	AppflowRepository appflowRepository;	
-		
-	public Appflow save(Appflow appflow){	
-        return appflowRepository.save(appflow);		
-    }		
 		
     public List<Appflow> findAll(){		
         return appflowRepository.findAll();		
@@ -30,11 +25,11 @@ public class AppflowService {
     }		
     		
     public Appflow create(Appflow appflow){		
-        return appflowRepository.save(appflow);		
+        return appflowRepository.saveAndFlush(appflow);		
     }		
     		
     public Appflow update(Appflow appflow){		
-        return appflowRepository.save(appflow);		
+        return appflowRepository.saveAndFlush(appflow);		
     }		
 
     public void delete(Integer appflow){		

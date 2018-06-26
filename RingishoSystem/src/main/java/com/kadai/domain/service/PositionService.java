@@ -17,9 +17,6 @@ public class PositionService {
 	@Autowired
 	PositionRepository positionRepository;
 	
-	public Position save(Position position){
-        return positionRepository.save(position);	
-    }	
 	
     public List<Position> findAll(){	
         return positionRepository.findAll();	
@@ -30,11 +27,11 @@ public class PositionService {
     }	
     	
     public Position create(Position position){	
-        return positionRepository.save(position);	
+        return positionRepository.saveAndFlush(position);
     }	
     	
     public Position update(Position position){	
-        return positionRepository.save(position);	
+        return positionRepository.saveAndFlush(position);
     }	
     	
     public void delete(Integer position){	

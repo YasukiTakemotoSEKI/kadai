@@ -20,10 +20,6 @@ public class EmployeeService implements UserDetailsService {
 	@Autowired
 	EmployeeRepository employeeRepository;
 	
-	public Employee save(Employee employee){
-        return employeeRepository.save(employee);
-    }
-	
     public List<Employee> findAll(){
         return employeeRepository.findAll();
     }
@@ -33,11 +29,11 @@ public class EmployeeService implements UserDetailsService {
     }
     
     public Employee create(Employee employee){
-        return employeeRepository.save(employee);
+        return employeeRepository.saveAndFlush(employee);
     }
     
     public Employee update(Employee employee){
-        return employeeRepository.save(employee);
+        return employeeRepository.saveAndFlush(employee);
     }
     
     public void delete(Integer employeeId){

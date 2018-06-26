@@ -17,10 +17,6 @@ public class DepartmentService {
 	@Autowired
 	DevisionRepository devisionRepository;
 	
-	public Devision save(Devision devision){
-        return devisionRepository.save(devision);	
-    }	
-	
     public List<Devision> findAll(){	
         return devisionRepository.findAll();	
     }	
@@ -30,11 +26,11 @@ public class DepartmentService {
     }	
     	
     public Devision create(Devision devision){	
-        return devisionRepository.save(devision);	
+        return devisionRepository.saveAndFlush(devision);
     }	
     	
     public Devision update(Devision devision){	
-        return devisionRepository.save(devision);	
+        return devisionRepository.saveAndFlush(devision);
     }	
     	
     public void delete(Integer devision){	

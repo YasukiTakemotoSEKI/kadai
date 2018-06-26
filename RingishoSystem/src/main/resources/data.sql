@@ -1,5 +1,6 @@
 DROP TABLE employee;
 DROP TABLE app;
+DROP TABLE price;
 
 create table IF NOT EXISTS employee (
     employee_id INTEGER primary key auto_increment,
@@ -128,4 +129,4 @@ create table IF NOT EXISTS price (
 );
 
 insert into price (price_id, price_value) values (1,9999);
-insert into price (price_id, price_value) values (2,10000);
+insert into price (price_id, price_value) values (2,1000000000);

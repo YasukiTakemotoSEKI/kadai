@@ -24,10 +24,6 @@ public class PriceService implements UserDetailsService{
 	@Autowired
 	PriceRepository priceRepository;
 	
-	public Price save(Price price){
-        return priceRepository.save(price);	
-    }	
-	
     public List<Price> findAll(){	
         return priceRepository.findAll();	
     }
@@ -37,11 +33,11 @@ public class PriceService implements UserDetailsService{
     }	
     	
     public Price create(Price price){	
-        return priceRepository.save(price);	
+        return priceRepository.saveAndFlush(price);
     }	
     	
     public Price update(Price price){	
-        return priceRepository.save(price);	
+        return priceRepository.saveAndFlush(price);
     }	
     	
     public void delete(Integer price){	

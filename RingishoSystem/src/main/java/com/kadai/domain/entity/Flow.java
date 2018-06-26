@@ -44,7 +44,7 @@ public class Flow {
 	}
 	
 	public int getPriceId() {
-		return flowId;
+		return priceId;
 	}
 	
 	public void setPriceId(int priceId) {
@@ -60,7 +60,7 @@ public class Flow {
 	}
 	
 	public int getFlowOrder() {
-		return flowId;
+		return flowOrder;
 	}
 	
 	public void setFlowOrder(int flowOrder) {

@@ -17,10 +17,6 @@ public class FlowService {
 	@Autowired
 	FlowRepository flowRepository;
 	
-	public Flow save(Flow flow){
-        return flowRepository.save(flow);	
-    }	
-	
     public List<Flow> findAll(){	
         return flowRepository.findAll();	
     }	
@@ -30,15 +26,19 @@ public class FlowService {
     }	
     	
     public Flow create(Flow flow){	
-        return flowRepository.save(flow);	
+        return flowRepository.saveAndFlush(flow);	
     }	
     	
     public Flow update(Flow flow){	
-        return flowRepository.save(flow);	
+        return flowRepository.saveAndFlush(flow);	
     }	
     	
     public void delete(Integer flow){	
     	flowRepository.deleteById(flow);
     }	
+    
+    public List<Flow> findByPriceId(int priceId){
+    	return flowRepository.findByPriceId(priceId);
+    }
 
 }

@@ -80,7 +80,7 @@ public class App {
 		this.appId = appId;
 	}
 
-	public long getEmployeeId() {
+	public int getEmployeeId() {
 		return employeeId;
 	}
 	
