@@ -43,6 +43,8 @@ public class AppController {
 		//Chromeブラウザ読み込みで走る？
 		// 案件１件分のレコード作成
 		App app = new App(1, 1, 1, 1, false, "稟議システムの決済について", "稟議書システムの決済をお願いいたします。", 10000, "http://tenpusiryooo", "とにかくお願いします。", null, null);
+		
+		
 		int appPrice = app.getAppPrice();
 		// //Priceテーブルを昇順で取得
 		List<Price> priceTableAll = new ArrayList<Price>(priceservice.findAll());
