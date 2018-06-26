@@ -9,7 +9,7 @@
 	<section layout:fragment="content">
 		<h1>稟議書作成</h1>
 		
-		<p th:if="${validationError}" th:text="${validationError}">validation error</p>
+		<p th:if="${validation_message}" th:text="${validation_message}">validation error</p>
 
 		<form id="sessionAppForm" role="form" action="/make/complete" th:action="@{/make/complete}" th:object="${sessionAppForm}" method="post">
 			<div class="form-group">
@@ -28,7 +28,7 @@
 				<p>添付書類</p>
 				<p th:text="*{appAttachment}"></p>
 			</div>
-			<div class="form-group">
+			<div class="form-group" th:if="!*{#strings.isEmpty(appComment)}">
 				<p>コメント／所見</p>
 				<p th:text="*{appComment}"></p>
 			</div>
