@@ -12,12 +12,14 @@ import com.kadai.domain.service.AppflowService;
 import com.kadai.domain.service.FlowService;
 import com.kadai.domain.service.PriceService;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -40,13 +42,14 @@ public class AppController {
 	AppflowService appflowservice;
 
 	@RequestMapping("/test")
-	public String apptest() {
+	public String apptest(Principal principal) {
 		//Chromeブラウザ読み込みで走る？
 		// 案件１件分のレコード作成
 //		App app = new App(1, 1, 1, 1, false, "稟議システムの決済について", "稟議書システムの決済をお願いいたします。", 10000, "http://tenpusiryooo", "とにかくお願いします。", null, null);
 //		appservice.searchPrice(app);
-		Employee employee = new Employee(2,0,3,1131,"butyou@eigyou","$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe");
-		appservice.IncompleteList(employee);
+		Authentication auth = (Authentication)principal;
+		Employee employee = (Employee)auth.getPrincipal();
+		appservice.ApprovalStatus(employee);
 		return "/home/test";
 	}
 }

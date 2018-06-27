@@ -63,6 +63,10 @@ public class AppService {
 		return appRepository.findByDepartmentIdAndDivisionIdAndAppFlg(departmentId, divisionId, appFlg);
 	}
 	
+	public List<App> findByEmployeeId(int employeeId){
+		return appRepository.findByEmployeeId(employeeId);
+	}
+	
 //	public List<App> findByAppId(App app) {
 //		return app;
 //		
@@ -72,6 +76,13 @@ public class AppService {
 		
 	}
 
+	public List<App> ApprovalStatus(Employee employee){
+		List<App> app = new ArrayList<App>(findByEmployeeId(employee.getEmployeeId()));
+//		System.out.println(app);
+		return app;
+		
+	}
+	
 	public List<App> IncompleteList(Employee employee) {
 		// employeeのposition確保
 		int positionId = employee.getPositionId();
@@ -115,9 +126,6 @@ public class AppService {
 			}
 			
 		}
-        for(int i=0; i<app.size(); i++){
-            System.out.println(app.get(i));
-        }
 		
 		
 		return app;
