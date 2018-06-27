@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.kadai.domain.entity.App;
 
 public interface AppRepository extends JpaRepository<App, Integer> {
-	public List<App> findByDepartmentIdOrDivisionId(int departmentId, int divisionId);
-	public List<App> findByDepartmentId(int departmentId);
+	public List<App> findByDepartmentIdOrDivisionIdAndAppFlg(int departmentId, int divisionId, boolean appFlg);
+	public List<App> findByDepartmentIdAndAppFlg(int departmentId, boolean appFlg);
 }

@@ -1,5 +1,7 @@
 package com.kadai.domain.entity;
 
+import java.lang.reflect.Field;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -103,4 +105,21 @@ public class Appflow {
 	public void setApp(App app) {
 		this.app = app;
 	}	
+	
+	@Override
+	public String toString() {
+	    StringBuilder sb = new StringBuilder();
+	    sb.append("Class: " + this.getClass().getCanonicalName() + "\n");
+	    sb.append("Settings:\n");
+	    for (Field field : this.getClass().getDeclaredFields()) {
+	        try {
+	            field.setAccessible(true);
+	            sb.append(field.getName() + " = " + field.get(this) + "\n");
+	        } catch (IllegalAccessException e) {
+	            sb.append(field.getName() + " = " + "access denied\n");
+	        }
+	    }
+	    return sb.toString();
+	}
+	
 }
