@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,10 +34,22 @@ public class ListController {
 		List<App> unapproveds = new ArrayList<App>();
 		unapproveds = appservice.findAll();
 		mav.addObject("unapproveds", unapproveds);
-		
-		System.out.println(unapproveds);
-		
 		return mav;
 	}
+	
+	@RequestMapping("/list/view/{appId}")
+	public ModelAndView view(@PathVariable("appId") Integer appId) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/list/view");
+		//所有する申請データか確認
+		
+		//データ表示
+		App app = appservice.findOne(appId);
+		mav.addObject("app", app);
+		return mav;
+	}
+	
+	
+	
 	
 }
