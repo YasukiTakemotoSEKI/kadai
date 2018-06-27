@@ -62,10 +62,6 @@ public class AppService {
 		return appRepository.findByDepartmentIdOrDivisionId(departmentId, divisionId);
 	}
 	
-//	public List<App> findByAppId(App app) {
-//		return app;
-//		
-//	}
 	public List<App> findByDepartmentId(Integer departmentId) {
 		return appRepository.findByDepartmentId(departmentId);
 		
@@ -82,16 +78,19 @@ public class AppService {
 		}else {
 			app = findByDepartmentIdOrDivisionId(employee.getDepartmentId(),employee.getDivisionId());
 		}
-
 		
-//		// employeeのpositionでappflowのリストをさらに絞る。
-//		List<Appflow> appflow = new ArrayList<Appflow>(appflowservice.findByAppIdAndPositionIdAndAppflowFlg(app.getAppId(), employee.getPositionId(), true));
-////		appflowservice.findByAppIdAndPositionIdAndAppflowFlg(app.getAppId(), employee.getPositionId(), true);
-//		for(Appflow af : appflow) {
-//			System.out.println("appi"+af.getAppId());
-//			System.out.println("posi"+af.getPositionId());
-//			System.out.println("flow"+af.getAppflowOrder());
-//		}
+		List<Appflow> appflow = new ArrayList<Appflow>();
+		
+		for(App a:app) {
+		// employeeのpositionでappflowのリストをさらに絞る。
+			appflow = new ArrayList<Appflow>(appflowservice.findByAppIdAndPositionIdAndAppflowFlg(a.getAppId(), employee.getPositionId(), true));
+		}
+//		appflowservice.findByAppIdAndPositionIdAndAppflowFlg(app.getAppId(), employee.getPositionId(), true);
+		for(Appflow af : appflow) {
+			System.out.println("appi"+af.getAppId());
+			System.out.println("posi"+af.getPositionId());
+			System.out.println("flow"+af.getAppflowOrder());
+		}
 		
 		// positionで絞れたら未承認案件を表示。
 		
