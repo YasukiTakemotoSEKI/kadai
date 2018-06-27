@@ -9,6 +9,10 @@
 	<section layout:fragment="content">
 		<h1>未承認一覧</h1>
 		
+		<div class="alert alert-success" role="alert" th:if="${success_message}" th:text="${success_message}">
+			validation error
+		</div>
+		
 		<table class="table">
 			<tr>
 				<th>ID</th>
@@ -33,12 +37,25 @@
 				<td th:text="${unapproved.appStartDate}"></td>
 				<td>
 					<p><a th:href="@{/list/view/{appId}/(appId=${unapproved.appId})}">申請内容確認</a></p>
-					<p><a th:href="@{/list/approval/{appId}/(appId=${unapproved.appId})}">承認</a></p>
-					<p><a th:href="@{/list/dismissal/{appId}/(appId=${unapproved.appId})}">却下</a></p>
+					<p><a class="confirm" th:href="@{/list/approval/{appId}/(appId=${unapproved.appId})}">承認</a></p>
+					<p><a class="confirm" th:href="@{/list/dismissal/{appId}/(appId=${unapproved.appId})}">却下</a></p>
 				</td>
 			</tr>
 		
 		</table>
+		
+		<script type="text/javascript">
+			$(function() {
+				$(".confirm").on('click', function() {
+					if (window.confirm("処理を行いますがよろしいですか？")) {
+						location.href = $(this).attr('href');
+					} else {
+						return false;
+					}
+				});
+			});
+		</script>
+		
 	</section>
 
 </body>

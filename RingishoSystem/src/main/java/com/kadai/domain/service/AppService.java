@@ -157,4 +157,35 @@ public class AppService {
 			appflowservice.create(appflow);
 		}
 	}
+	
+	public void approval(int appId, int positionId) {
+		//該当のレコードを取得
+		App app = findOne(appId);
+		//Appflowテーブルを更新
+		boolean allApprobalFlg = false;
+		for(Appflow af : app.getAppflow()) {
+			//該当の行を更新する
+			if( positionId == af.getPositionId() ) {
+				af.setAppflowFlg(false);
+				appflowservice.update(af);
+			}
+			if(af.getAppflowFlg() == false) {
+				allApprobalFlg = true;
+			} else {
+				allApprobalFlg = false;
+			}
+		}
+		//すべての承認を完了していればAppテーブルを更新
+		if(allApprobalFlg) {
+			app.setAppFlg(false);
+			update(app);
+		}
+	}
+	
+	public void dismissal(int appId, int positionId) {
+		//Appテーブルを更新（AppFlowは変更しない）
+		App app = findOne(appId);
+		app.setAppFlg(false);
+		update(app);
+	}
 }
