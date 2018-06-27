@@ -7,7 +7,7 @@
 </head>
 <body>
 	<section layout:fragment="content">
-		<h1>承認処理</h1>
+		<h1>未承認一覧</h1>
 		
 		<table class="table">
 			<tr>
@@ -25,14 +25,16 @@
 				<td th:text="${unapproved.appSubject}"></td>
 				<td>
 					<ul th:each="af : ${unapproved.appflow}">
-						<li th:text="${af.getAppFlowId()}"></li>
+						<li>
+							<div th:text="(${af.getPosition().getPositionName()}) + '：' + (${af.getAppflowFlg() == false} ? '承認済み' : '未承認')"></div>
+						</li>
 					</ul>
 				</td>
 				<td th:text="${unapproved.appStartDate}"></td>
 				<td>
-					<p><a href="">申請内容確認</a></p>
-					<p><a href="">承認</a></p>
-					<p><a href="">却下</a></p>
+					<p><a th:href="@{/list/view/{appId}/(appId=${unapproved.appId})}">申請内容確認</a></p>
+					<p><a th:href="@{/list/approval/{appId}/(appId=${unapproved.appId})}">承認</a></p>
+					<p><a th:href="@{/list/dismissal/{appId}/(appId=${unapproved.appId})}">却下</a></p>
 				</td>
 			</tr>
 		
