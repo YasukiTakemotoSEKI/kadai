@@ -25,6 +25,8 @@ public class Flow {
 	@Column(name = "flow_order")
 	private int flowOrder;
 	
+	
+	
 	public Flow() {
 	}
 	

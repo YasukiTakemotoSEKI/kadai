@@ -9,20 +9,31 @@
 	<section layout:fragment="content">
 		<h1>承認処理</h1>
 		
-		<table>
+		<table class="table">
 			<tr>
 				<th>ID</th>
 				<th>申請者名</th>
 				<th>件名</th>
 				<th>承認状況</th>
 				<th>申請日</th>
+				<th>処理</th>
 			</tr>
 			
 			<tr th:each="unapproved : ${unapproveds}">
-				<td th:text="${customer.id}"></td>
-				<td th:text="${customer.id}"></td>
-				<td th:text="${customer.id}"></td>
-				<td th:text="${customer.id}"></td>
+				<td th:text="${unapproved.appId}"></td>
+				<td th:text="${unapproved.employee.employeeName}"></td>
+				<td th:text="${unapproved.appSubject}"></td>
+				<td>
+					<ul th:each="af : ${unapproved.appflow}">
+						<li th:text="${af.getAppFlowId()}"></li>
+					</ul>
+				</td>
+				<td th:text="${unapproved.appStartDate}"></td>
+				<td>
+					<p><a href="">申請内容確認</a></p>
+					<p><a href="">承認</a></p>
+					<p><a href="">却下</a></p>
+				</td>
 			</tr>
 		
 		</table>
