@@ -130,15 +130,20 @@ create table IF NOT EXISTS appflow (
 
 INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (1,1,2,2,TRUE,0);
 INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (2,1,3,3,TRUE,1);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (3,2,2,2,TRUE,0);
+
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (3,2,2,2,FALSE,0);
 INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (4,2,3,3,TRUE,1);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (5,3,2,2,TRUE,0);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (6,3,3,3,TRUE,1);
+
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (5,3,2,2,FALSE,0);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (6,3,3,3,FALSE,1);
+
 INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (7,4,2,2,TRUE,0);
 INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (8,4,3,3,TRUE,1);
+
 INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (9,5,2,2,TRUE,0);
 INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (10,5,3,3,TRUE,1);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (11,6,2,2,TRUE,0);
+
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (11,6,2,2,FALSE,0);
 INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (12,6,3,3,TRUE,1);
 
 

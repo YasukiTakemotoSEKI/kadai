@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -58,8 +59,8 @@ public class AppService {
 		appRepository.deleteById(app);
 	}
 	
-	public List<App> findByDepartmentIdOrDivisionIdAndAppFlg(Integer departmentId,Integer divisionId, boolean appFlg){
-		return appRepository.findByDepartmentIdOrDivisionIdAndAppFlg(departmentId, divisionId, appFlg);
+	public List<App> findByDepartmentIdAndDivisionIdAndAppFlg(Integer departmentId,Integer divisionId, boolean appFlg){
+		return appRepository.findByDepartmentIdAndDivisionIdAndAppFlg(departmentId, divisionId, appFlg);
 	}
 	
 //	public List<App> findByAppId(App app) {
@@ -80,45 +81,46 @@ public class AppService {
 		if(employee.getDivisionId() == 0){
 			app = findByDepartmentIdAndAppFlg(employee.getDepartmentId(), true);
 		}else {
-			app = findByDepartmentIdOrDivisionIdAndAppFlg(employee.getDepartmentId(),employee.getDivisionId(), true);
+			app = findByDepartmentIdAndDivisionIdAndAppFlg(employee.getDepartmentId(),employee.getDivisionId(), true);
 		}
-		List<Appflow> appflow = new ArrayList<Appflow>();
-		for(App a:app) {
-			System.out.println(app);
+		
+		Iterator<App> test = app.iterator();
+		
+		boolean checkFlg = true;
+		while(test.hasNext()) {
+			App a = test.next();
 			
-			//不要な要素は削除（remove）
-//			app.remove(employee);
-			System.out.println(app);
-			for(Appflow f : a.getAppflow()) {
+			for(Appflow af : a.getAppflow()) {
+				
 				//appflowで絞ったリストの作成。
-				if(f.getAppflowFlg()==true) {
-					if(f.getAppId()==a.getAppId()) {
-						if(f.getPositionId()==employee.getPositionId()) {
-						}
-					}
+				
+				//自分の役職より低い承認者の承認がされていなければ無効
+				if( ( employee.getPositionId() > af.getPositionId() ) && ( af.getAppflowFlg() == true ) ) {
+					checkFlg = false;
 				}
-//				a.getAppflow().remove(f.getAppFlowId());
-//				appflowservice.findByAppIdAndPositionIdAndAppflowFlg(a.getAppId(), employee.getPositionId(), true);
+				//自分の役職と同じで、すでに承認されていれば無効（承認済み）
+				if( ( employee.getPositionId() == af.getPositionId() ) && ( af.getAppflowFlg() == false ) ) {
+					checkFlg = false;
+				}
+				//社員の場合は承認権限無し。
+				if (employee.getPositionId()==1) {
+					checkFlg = false;
+				}
+
 			}
-			System.out.println(a.getAppflow());
+			
+			if( checkFlg == false  ) {
+				test.remove();
+				checkFlg = true;
+			}
+			
 		}
+        for(int i=0; i<app.size(); i++){
+            System.out.println(app.get(i));
+        }
 		
 		
-		// positionでappflowのリストをさらに絞る。
-		//　非承認の案件のみ
-		for(App a:app) {
-			appflow = new ArrayList<Appflow>(appflowservice.findByAppIdAndPositionIdAndAppflowFlg(a.getAppId(), employee.getPositionId(), true));
-		}
-//		appflowservice.findByAppIdAndPositionIdAndAppflowFlg(app.getAppId(), employee.getPositionId(), true);
-		for(Appflow af : appflow) {
-			System.out.println("appi"+af.getAppId());
-			System.out.println("posi"+af.getPositionId());
-			System.out.println("flow"+af.getAppflowOrder());
-		}
-		
-		// positionで絞れたら未承認案件を表示。
-		
-		return null;
+		return app;
 	}
 
 	/**

@@ -45,7 +45,7 @@ public class AppController {
 		// 案件１件分のレコード作成
 //		App app = new App(1, 1, 1, 1, false, "稟議システムの決済について", "稟議書システムの決済をお願いいたします。", 10000, "http://tenpusiryooo", "とにかくお願いします。", null, null);
 //		appservice.searchPrice(app);
-		Employee employee = new Employee(1,0,3,1131,"butyou@eigyou","$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe");
+		Employee employee = new Employee(2,0,3,1131,"butyou@eigyou","$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe");
 		appservice.IncompleteList(employee);
 		return "/home/test";
 	}
