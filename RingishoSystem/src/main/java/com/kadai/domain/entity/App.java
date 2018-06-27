@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -56,8 +58,26 @@ public class App {
 	@Column(name = "app_end_date")
 	private String appEndDate;
 	
-	@OneToMany(mappedBy = "appId")
-    private List<Appflow> appflow;
+	//テーブル結合
+	@OneToMany
+	@JoinColumn(name="app_id", insertable=false, updatable=false)
+	private List<Appflow> appflow;
+	
+	@OneToOne
+	@JoinColumn(name="employee_id", insertable=false, updatable=false)
+	private Employee employee;
+	
+	@OneToOne
+	@JoinColumn(name="department_id", insertable=false, updatable=false)
+	private Department department;
+	
+	@OneToOne
+	@JoinColumn(name="division_id", insertable=false, updatable=false)
+	private Division division;
+	
+	@OneToOne
+	@JoinColumn(name="price_id", insertable=false, updatable=false)
+	private Price price;
 	
 	public App() {
 	}
@@ -190,6 +210,38 @@ public class App {
 	public void setAppflow(List<Appflow> appflow) {
 		this.appflow = appflow;
 	}	
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
+	public Division getDivision() {
+		return division;
+	}
+
+	public void setDivision(Division division) {
+		this.division = division;
+	}
+	
+	public Price getPrice() {
+		return price;
+	}
+
+	public void setPrice(Price price) {
+		this.price = price;
+	}
 	
 	@Override
 	public String toString() {
@@ -206,5 +258,5 @@ public class App {
 	    }
 	    return sb.toString();
 	}
-
+	
 }

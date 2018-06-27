@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.kadai.domain.entity.App;
 import com.kadai.domain.entity.Employee;
 import com.kadai.domain.service.AppService;
@@ -18,18 +20,22 @@ public class ListController {
 	AppService appservice;
 	
 	@RequestMapping("/list")
-	public String index(Principal principal) {
+	public ModelAndView index(Principal principal) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/list/index");
+		
 		//ユーザー情報取得・セッションにセット
 		Authentication auth = (Authentication)principal;
 		Employee employee = (Employee)auth.getPrincipal();
 		
 		//未承認一覧の取得
-		List<App> unapproved_list = new ArrayList<App>();
-		unapproved_list = appservice.findAll();
+		List<App> unapproveds = new ArrayList<App>();
+		unapproveds = appservice.findAll();
+		mav.addObject("unapproveds", unapproveds);
 		
-		System.out.println(unapproved_list);
+		System.out.println(unapproveds);
 		
-		return "/make/index";
+		return mav;
 	}
 	
 }

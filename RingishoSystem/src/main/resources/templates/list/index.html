@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout}">
+<head>
+<title>稟議書システム</title>
+<meta charset="UTF-8">
+</head>
+<body>
+	<section layout:fragment="content">
+		<h1>承認処理</h1>
+		
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>申請者名</th>
+				<th>件名</th>
+				<th>承認状況</th>
+				<th>申請日</th>
+			</tr>
+			
+			<tr th:each="unapproved : ${unapproveds}">
+				<td th:text="${customer.id}"></td>
+				<td th:text="${customer.id}"></td>
+				<td th:text="${customer.id}"></td>
+				<td th:text="${customer.id}"></td>
+			</tr>
+		
+		</table>
+	</section>
+
+</body>
+</html>
