@@ -62,6 +62,13 @@ create table IF NOT EXISTS app (
     app_end_date varchar(255)
 );
 
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (1,4,1,1,2,TRUE,'テスト件名','テスト内容',50000,'テスト添付書類','テストコメント','2018/6/26 17:08','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (2,4,1,1,2,TRUE,'テスト件名２','テスト内容２',20000000,'テスト添付書類','テストコメント','2018/6/26 17:09','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (3,4,1,1,2,TRUE,'テスト件名３','テスト内容',500000,'テスト添付書類','テストコメント','2018/6/26 17:09','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (4,5,1,1,2,TRUE,'テストデータ１','テスト内容',500000,'テスト添付','テストコメント','2018/06/26 17:28:59','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (5,5,1,1,2,TRUE,'テストデータ２','テスト内容',9999,'テスト添付書類','テストコメント','2018/06/26 17:29:24','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (6,5,1,1,2,TRUE,'テストデータ３','テスト内容',500000000,'テスト添付書類','テストコメント','2018/06/26 17:29:43','null');
+
 create table IF NOT EXISTS appflow (
     appflow_id INTEGER primary key auto_increment,
     app_id INTEGER,
@@ -70,6 +77,20 @@ create table IF NOT EXISTS appflow (
     appflow_flg BOOLEAN,
     appflow_order INTEGER
 );
+
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (1,1,TRUE,0,2,2);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (2,1,TRUE,1,3,3);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (3,2,TRUE,0,2,2);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (4,2,TRUE,1,3,3);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (5,3,TRUE,0,2,2);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (6,3,TRUE,1,3,3);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (7,4,TRUE,0,2,2);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (8,4,TRUE,1,3,3);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (9,5,TRUE,0,2,2);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (10,5,TRUE,1,3,3);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (11,6,TRUE,0,2,2);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (12,6,TRUE,1,3,3);
+
 
 create table IF NOT EXISTS position (
     position_id INTEGER primary key auto_increment,
