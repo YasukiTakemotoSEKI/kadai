@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -32,8 +33,14 @@ public class Appflow {
 	@Column(name = "appflow_order")
 	private int appflowOrder;
 	
+	//テーブル結合
 	@ManyToOne
-    private App app;
+	@JoinColumn(name="flow_id", insertable=false, updatable=false)
+	private Flow flow;
+	
+	@ManyToOne
+	@JoinColumn(name="position_id", insertable=false, updatable=false)
+	private Position position;
 	
 	public Appflow() {
 	}
@@ -95,12 +102,20 @@ public class Appflow {
 	public void setAppflowOrder(int appflowOrder) {
 		this.appflowOrder = appflowOrder;
 	}
-
-	public App getApp() {
-		return app;
+	
+	public Flow getFlow() {
+		return flow;
 	}
 
-	public void setApp(App app) {
-		this.app = app;
-	}	
+	public void setFlow(Flow flow) {
+		this.flow = flow;
+	}
+
+	public Position getPosition() {
+		return position;
+	}
+
+	public void setPosition(Position position) {
+		this.position = position;
+	}
 }

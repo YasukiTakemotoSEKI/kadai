@@ -46,52 +46,6 @@ insert into employee (department_id, division_id, position_id, employee_no, empl
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,2,1,3215,'hirab@seizou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 insert into employee (department_id, division_id, position_id, employee_no, employee_name, employee_password) values (3,2,1,3216,'hirac@seizou2','$2a$10$1QoSumU.HAfvLUCFt2DZres3k8Xr7Y5PE23maWzkhh9CYPl/lZzpe');
 
-create table IF NOT EXISTS app (
-    app_id INTEGER primary key auto_increment,
-    employee_id INTEGER,
-    department_id INTEGER,
-    division_id INTEGER,
-    price_id INTEGER,
-    app_flg BOOLEAN,
-    app_subject varchar(255),
-    app_content CLOB,
-    app_price INTEGER,
-    app_attachment CLOB,
-    app_comment CLOB,
-    app_start_date varchar(255),
-    app_end_date varchar(255)
-);
-
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (1,4,1,1,2,TRUE,'テスト件名','テスト内容',50000,'テスト添付書類','テストコメント','2018/6/26 17:08','null');
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (2,4,1,1,2,TRUE,'テスト件名２','テスト内容２',20000000,'テスト添付書類','テストコメント','2018/6/26 17:09','null');
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (3,4,1,1,2,TRUE,'テスト件名３','テスト内容',500000,'テスト添付書類','テストコメント','2018/6/26 17:09','null');
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (4,5,1,1,2,TRUE,'テストデータ１','テスト内容',500000,'テスト添付','テストコメント','2018/06/26 17:28:59','null');
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (5,5,1,1,2,TRUE,'テストデータ２','テスト内容',9999,'テスト添付書類','テストコメント','2018/06/26 17:29:24','null');
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (6,5,1,1,2,TRUE,'テストデータ３','テスト内容',500000000,'テスト添付書類','テストコメント','2018/06/26 17:29:43','null');
-
-create table IF NOT EXISTS appflow (
-    appflow_id INTEGER primary key auto_increment,
-    app_id INTEGER,
-    flow_id INTEGER,
-    position_id INTEGER,
-    appflow_flg BOOLEAN,
-    appflow_order INTEGER
-);
-
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (1,1,TRUE,0,2,2);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (2,1,TRUE,1,3,3);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (3,2,TRUE,0,2,2);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (4,2,TRUE,1,3,3);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (5,3,TRUE,0,2,2);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (6,3,TRUE,1,3,3);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (7,4,TRUE,0,2,2);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (8,4,TRUE,1,3,3);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (9,5,TRUE,0,2,2);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (10,5,TRUE,1,3,3);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (11,6,TRUE,0,2,2);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (12,6,TRUE,1,3,3);
-
-
 create table IF NOT EXISTS position (
     position_id INTEGER primary key auto_increment,
     position_name varchar(200)
@@ -141,3 +95,52 @@ create table IF NOT EXISTS price (
 
 insert into price (price_id, price_value) values (1,9999);
 insert into price (price_id, price_value) values (2,1000000000);
+
+create table IF NOT EXISTS app (
+    app_id INTEGER primary key auto_increment,
+    employee_id INTEGER,
+    department_id INTEGER,
+    division_id INTEGER,
+    price_id INTEGER,
+    app_flg BOOLEAN,
+    app_subject varchar(255),
+    app_content CLOB,
+    app_price INTEGER,
+    app_attachment CLOB,
+    app_comment CLOB,
+    app_start_date varchar(255),
+    app_end_date varchar(255)
+);
+
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (1,4,1,1,2,TRUE,'テスト件名','テスト内容',50000,'テスト添付書類','テストコメント','2018/6/26 17:08','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (2,4,1,1,2,TRUE,'テスト件名２','テスト内容２',20000000,'テスト添付書類','テストコメント','2018/6/26 17:09','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (3,4,1,1,2,TRUE,'テスト件名３','テスト内容',500000,'テスト添付書類','テストコメント','2018/6/26 17:09','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (4,5,1,1,2,TRUE,'テストデータ１','テスト内容',500000,'テスト添付','テストコメント','2018/06/26 17:28:59','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (5,5,1,1,2,TRUE,'テストデータ２','テスト内容',9999,'テスト添付書類','テストコメント','2018/06/26 17:29:24','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (6,5,1,1,2,TRUE,'テストデータ３','テスト内容',500000000,'テスト添付書類','テストコメント','2018/06/26 17:29:43','null');
+
+create table IF NOT EXISTS appflow (
+    appflow_id INTEGER primary key auto_increment,
+    app_id INTEGER,
+    flow_id INTEGER,
+    position_id INTEGER,
+    appflow_flg BOOLEAN,
+    appflow_order INTEGER
+);
+
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (1,1,2,2,TRUE,0);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (2,1,3,3,TRUE,1);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (3,2,2,2,TRUE,0);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (4,2,3,3,TRUE,1);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (5,3,2,2,TRUE,0);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (6,3,3,3,TRUE,1);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (7,4,2,2,TRUE,0);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (8,4,3,3,TRUE,1);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (9,5,2,2,TRUE,0);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (10,5,3,3,TRUE,1);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (11,6,2,2,TRUE,0);
+INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (12,6,3,3,TRUE,1);
+
+
+
+
