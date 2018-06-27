@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +31,9 @@ public class Appflow {
 	
 	@Column(name = "appflow_order")
 	private int appflowOrder;
+	
+	@ManyToOne
+    private App app;
 	
 	public Appflow() {
 	}
@@ -90,6 +94,14 @@ public class Appflow {
 		
 	public void setAppflowOrder(int appflowOrder) {	
 		this.appflowOrder = appflowOrder;
+	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
 	}	
 
 

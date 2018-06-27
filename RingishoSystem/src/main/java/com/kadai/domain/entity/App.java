@@ -1,10 +1,14 @@
 package com.kadai.domain.entity;
 
+import java.lang.reflect.Field;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -51,6 +55,9 @@ public class App {
 	
 	@Column(name = "app_end_date")
 	private String appEndDate;
+	
+	@OneToMany(mappedBy = "appId")
+    private List<Appflow> appflow;
 	
 	public App() {
 	}
@@ -174,7 +181,30 @@ public class App {
 		
 	public void setAppEndDate(String appEndDate) {	
 		this.appEndDate = appEndDate;
+	}
+
+	public List<Appflow> getAppflow() {
+		return appflow;
+	}
+
+	public void setAppflow(List<Appflow> appflow) {
+		this.appflow = appflow;
 	}	
 	
+	@Override
+	public String toString() {
+	    StringBuilder sb = new StringBuilder();
+	    sb.append("Class: " + this.getClass().getCanonicalName() + "\n");
+	    sb.append("Settings:\n");
+	    for (Field field : this.getClass().getDeclaredFields()) {
+	        try {
+	            field.setAccessible(true);
+	            sb.append(field.getName() + " = " + field.get(this) + "\n");
+	        } catch (IllegalAccessException e) {
+	            sb.append(field.getName() + " = " + "access denied\n");
+	        }
+	    }
+	    return sb.toString();
+	}
 
 }
