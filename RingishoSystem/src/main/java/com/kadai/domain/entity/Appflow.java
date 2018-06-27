@@ -95,8 +95,6 @@ public class Appflow {
 	public void setAppflowOrder(int appflowOrder) {
 		this.appflowOrder = appflowOrder;
 	}
-<<<<<<< HEAD
-=======
 
 	public App getApp() {
 		return app;
@@ -105,6 +103,4 @@ public class Appflow {
 	public void setApp(App app) {
 		this.app = app;
 	}	
->>>>>>> refs/remotes/origin/make_list_view
-
 }
