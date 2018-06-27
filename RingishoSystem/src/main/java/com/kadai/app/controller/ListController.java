@@ -26,13 +26,13 @@ public class ListController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/list/index");
 		
-		//ユーザー情報取得・セッションにセット
+		//ユーザー情報取得
 		Authentication auth = (Authentication)principal;
 		Employee employee = (Employee)auth.getPrincipal();
 		
 		//未承認一覧の取得
 		List<App> unapproveds = new ArrayList<App>();
-		unapproveds = appservice.findAll();
+		unapproveds = appservice.IncompleteList(employee);
 		mav.addObject("unapproveds", unapproveds);
 		return mav;
 	}
@@ -41,15 +41,61 @@ public class ListController {
 	public ModelAndView view(@PathVariable("appId") Integer appId) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/list/view");
+		
 		//所有する申請データか確認
 		
 		//データ表示
 		App app = appservice.findOne(appId);
 		mav.addObject("app", app);
+		
 		return mav;
 	}
 	
+	@RequestMapping("/list/approval/{appId}")
+	public ModelAndView approval(@PathVariable("appId") Integer appId, Principal principal) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/list/index");
+		
+		//ユーザー情報取得
+		Authentication auth = (Authentication)principal;
+		Employee employee = (Employee)auth.getPrincipal();
+		
+		//所有する申請データか確認
+		
+		//承認処理
+		appservice.approval(appId, employee.getPositionId());
+		mav.addObject("success_message", "承認を完了しました。");
+		
+		//未承認一覧の取得
+		List<App> unapproveds = new ArrayList<App>();
+		unapproveds = appservice.IncompleteList(employee);
+		mav.addObject("unapproveds", unapproveds);
+		
+		return mav;
+	}
 	
+	@RequestMapping("/list/dismissal/{appId}")
+	public ModelAndView dismissal(@PathVariable("appId") Integer appId, Principal principal) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/list/index");
+		
+		//ユーザー情報取得
+		Authentication auth = (Authentication)principal;
+		Employee employee = (Employee)auth.getPrincipal();
+		
+		//所有する申請データか確認
+		
+		//却下処理
+		appservice.dismissal(appId, employee.getPositionId());
+		mav.addObject("success_message", "却下を完了しました。");
+		
+		//未承認一覧の取得
+		List<App> unapproveds = new ArrayList<App>();
+		unapproveds = appservice.IncompleteList(employee);
+		mav.addObject("unapproveds", unapproveds);
+		
+		return mav;
+	}
 	
 	
 }
