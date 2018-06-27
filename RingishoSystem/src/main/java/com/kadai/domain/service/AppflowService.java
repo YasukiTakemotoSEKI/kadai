@@ -12,30 +12,35 @@ import com.kadai.domain.repository.AppflowRepository;
 
 @Service
 public class AppflowService {
+
+	@Autowired
+	AppflowRepository appflowRepository;
+
+	public List<Appflow> findAll() {
+		return appflowRepository.findAll();
+	}
+
+	public Appflow findOne(Integer appflowId) {
+		return appflowRepository.findById(appflowId).get();
+	}
+
+	public Appflow create(Appflow appflow) {
+		return appflowRepository.saveAndFlush(appflow);
+	}
+
+	public Appflow update(Appflow appflow) {
+		return appflowRepository.saveAndFlush(appflow);
+	}
+
+	public void delete(Integer appflow) {
+		appflowRepository.deleteById(appflow);
+	}
 	
-	@Autowired	
-	AppflowRepository appflowRepository;	
+	public List<Appflow> findByAppIdAndPositionIdAndAppflowFlg(Integer appId,Integer positionId,boolean appflowFlg) {
+		return appflowRepository.findByAppIdAndPositionIdAndAppflowFlg(appId, positionId, appflowFlg);
 		
-    public List<Appflow> findAll(){		
-        return appflowRepository.findAll();		
-    }		
-    		
-    public Appflow findOne(Integer appflowId){		
-        return appflowRepository.findById(appflowId).get();		
-    }		
-    		
-    public Appflow create(Appflow appflow){		
-        return appflowRepository.saveAndFlush(appflow);		
-    }		
-    		
-    public Appflow update(Appflow appflow){		
-        return appflowRepository.saveAndFlush(appflow);		
-    }		
+	}
+	
+	
 
-    public void delete(Integer appflow){		
-    	appflowRepository.deleteById(appflow);	
-    }		
-
-
-    
 }

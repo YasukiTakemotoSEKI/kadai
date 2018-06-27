@@ -22,77 +22,114 @@ import com.kadai.domain.repository.AppRepository;
 @Service
 @Transactional
 public class AppService {
-	
+
 	@Autowired
 	AppRepository appRepository;
-	
+
 	@Autowired
 	PriceService priceservice;
-	
+
 	@Autowired
 	FlowService flowservice;
-	
+
 	@Autowired
 	AppflowService appflowservice;
-	
+
 	@Autowired
 	EmployeeService employeeservice;
-	
-    public List<App> findAll(){	
-        return appRepository.findAll();	
-    }	
-    	
-    public App findOne(Integer appId){	
-        return appRepository.findById(appId).get();	
-    }	
-    	
-    public App create(App app){	
-        return appRepository.saveAndFlush(app);	
-    }	
-    	
-    public App update(App app){	
-        return appRepository.saveAndFlush(app);
-    }	
-    	
-    public void delete(Integer app){	
-    	appRepository.deleteById(app);
-    }
-  
 
-    /**
-     * 申請金額のチェック
-     * 戻り値
-     * 処理が二回呼ばれる？不都合あれば修正
-     */
-    public void searchPrice(App app) {
+	public List<App> findAll() {
+		return appRepository.findAll();
+	}
+
+	public App findOne(Integer appId) {
+		return appRepository.findById(appId).get();
+	}
+
+	public App create(App app) {
+		return appRepository.saveAndFlush(app);
+	}
+
+	public App update(App app) {
+		return appRepository.saveAndFlush(app);
+	}
+
+	public void delete(Integer app) {
+		appRepository.deleteById(app);
+	}
+	
+	public List<App> findByDepartmentIdOrDivisionId(Integer departmentId,Integer divisionId){
+		return appRepository.findByDepartmentIdOrDivisionId(departmentId, divisionId);
+	}
+	
+//	public List<App> findByAppId(App app) {
+//		return app;
+//		
+//	}
+	public List<App> findByDepartmentId(Integer departmentId) {
+		return appRepository.findByDepartmentId(departmentId);
+		
+	}
+
+	public List<App> IncompleteList(Employee employee) {
+		// employeeのposition確保
+		int positionId = employee.getPositionId();
+		// appからdivisionとdepartmentでappを絞る。
+		// devisionが0なら部長。
+		List<App> app = new ArrayList<App>();
+		if(employee.getDivisionId() == 0){
+			app = findByDepartmentId(employee.getDepartmentId());
+		}else {
+			app = findByDepartmentIdOrDivisionId(employee.getDepartmentId(),employee.getDivisionId());
+		}
+
+		
+//		// employeeのpositionでappflowのリストをさらに絞る。
+//		List<Appflow> appflow = new ArrayList<Appflow>(appflowservice.findByAppIdAndPositionIdAndAppflowFlg(app.getAppId(), employee.getPositionId(), true));
+////		appflowservice.findByAppIdAndPositionIdAndAppflowFlg(app.getAppId(), employee.getPositionId(), true);
+//		for(Appflow af : appflow) {
+//			System.out.println("appi"+af.getAppId());
+//			System.out.println("posi"+af.getPositionId());
+//			System.out.println("flow"+af.getAppflowOrder());
+//		}
+		
+		// positionで絞れたら未承認案件を表示。
+		
+		return null;
+	}
+
+	/**
+	 * 申請金額のチェック 戻り値 処理が二回呼ばれる？不都合あれば修正
+	 */
+	public void searchPrice(App app) {
 		int appPrice = app.getAppPrice();
 		// //Priceテーブルを昇順で取得
 		List<Price> priceTableAll = new ArrayList<Price>(priceservice.findAll());
-    	//申請金額（appPrice）が閾値（PriceValue）より低ければpriceId取得
-    	int priceId = 0;
-    	for (Price p:priceTableAll) {
-    		if(appPrice <p.getPriceValue()) {
-    			priceId = p.getPriceId();
-    			break;
-    		}
-    	}
+		// 申請金額（appPrice）が閾値（PriceValue）より低ければpriceId取得
+		int priceId = 0;
+		for (Price p : priceTableAll) {
+			if (appPrice < p.getPriceValue()) {
+				priceId = p.getPriceId();
+				break;
+			}
+		}
 		app.setPriceId(priceId);
 		create(app);
-		
-		//承認者データの取得
+
+		// 承認者データの取得
 		Employee applicant = employeeservice.findOne(app.getEmployeeId());
-		
+
 		// priceIdごとに承認フロー(flow)レコード呼び出し・(appflow)のレコード作成。
 		List<Flow> flowTableAll = new ArrayList<Flow>(flowservice.findByPriceId(priceId));
-		for(Flow f:flowTableAll){
-			//登録処理
+		for (Flow f : flowTableAll) {
+			// 登録処理
 			Appflow appflow = new Appflow();
-			appflow.setappId(app.getAppId());
+			appflow.setAppId(app.getAppId());
 			appflow.setFlowId(f.getFlowId());
 			appflow.setPositionId(f.getPositionId());
-			appflow.setappflowFlg(true);
+			appflow.setAppflowFlg(true);
 			appflow.setAppflowOrder(f.getFlowOrder());
 			appflowservice.create(appflow);
 		}
-    }
+	}
 }

@@ -77,11 +77,11 @@ public class Employee implements UserDetails {
 		this.divisionId = divisionId;
 	}
 	
-	public int getClassId() {
+	public int getPositionId() {
 		return positionId;
 	}
 	
-	public void setClassId(int positionId) {
+	public void setPositionId(int positionId) {
 		this.positionId = positionId;
 	}
 	

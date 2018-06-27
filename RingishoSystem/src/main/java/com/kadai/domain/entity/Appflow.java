@@ -8,32 +8,33 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Appflow")
+@Table(name = "Appflow")
 public class Appflow {
-	
+
 	@Id
 	@Column(name = "appflow_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int appflowId;
-	
+
 	@Column(name = "app_id")
 	private int appId;
-	
+
 	@Column(name = "flow_id")
 	private int flowId;
-	
+
 	@Column(name = "position_id")
 	private int positionId;
-	
+
 	@Column(name = "appflow_flg")
 	private boolean appflowFlg;
-	
+
 	@Column(name = "appflow_order")
 	private int appflowOrder;
 	
+
 	public Appflow() {
 	}
-	
+
 	public Appflow(int appId, int flowId, int positionId, boolean appflowFlg, int appflowOrder) {
 		this();
 		this.appId = appId;
@@ -41,58 +42,55 @@ public class Appflow {
 		this.positionId = positionId;
 		this.appflowFlg = appflowFlg;
 		this.appflowOrder = appflowOrder;
-		
+
 	}
-	
-	public int getappFlowId() {	
+
+	public int getAppFlowId() {
 		return appflowId;
-	}	
-		
-	public void setappFlowId(int appflowId) {	
+	}
+
+	public void setAppFlowId(int appflowId) {
 		this.appflowId = appflowId;
-	}	
-	
-	public int getappId() {	
+	}
+
+	public int getAppId() {
 		return appId;
-	}	
-		
-	public void setappId(int appId) {	
+	}
+
+	public void setAppId(int appId) {
 		this.appId = appId;
-	}	
+	}
 
-	public int getFlowId() {	
+	public int getFlowId() {
 		return flowId;
-	}	
-		
-	public void setFlowId(int flowId) {	
+	}
+
+	public void setFlowId(int flowId) {
 		this.flowId = flowId;
-	}	
-	
-	public int getPositionId() {	
+	}
+
+	public int getPositionId() {
 		return positionId;
-	}	
-		
-	public void setPositionId(int positionId) {	
+	}
+
+	public void setPositionId(int positionId) {
 		this.positionId = positionId;
-	}	
-	
-	public boolean getappflowFlg() {	
+	}
+
+	public boolean getAppflowFlg() {
 		return appflowFlg;
-	}	
-		
-	public void setappflowFlg(boolean appflowFlg) {	
+	}
+
+	public void setAppflowFlg(boolean appflowFlg) {
 		this.appflowFlg = appflowFlg;
-	}	
+	}
 
-	public int getAppflowOrder() {	
+	public int getAppflowOrder() {
 		return appflowOrder;
-	}	
-		
-	public void setAppflowOrder(int appflowOrder) {	
+	}
+
+	public void setAppflowOrder(int appflowOrder) {
 		this.appflowOrder = appflowOrder;
-	}	
+	}
 
-
-	
-	
 }
