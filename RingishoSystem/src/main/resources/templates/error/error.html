@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout}">
 <head>
-    <title>error</title>
+<title>稟議書システム</title>
+<meta charset="UTF-8">
 </head>
-<body>
-<h1>
-    error page  
-</h1>
-<P>${message} </P>
- 
-</body>
+	<body>
+		<section layout:fragment="content">
+			<h1>予期せぬエラー</h1>
+		</section>
+	</body>
+	
 </html>
