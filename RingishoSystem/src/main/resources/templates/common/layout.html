@@ -26,9 +26,10 @@
 			<div id="navbar" class="collapse navbar-collapse" sec:authorize="isAuthenticated()">
 				<ul class="nav navbar-nav">
 					<li><a href="/home">Home</a></li>
-					<li><a href="/make">作成</a></li>
-					<li><a href="/list">未承認一覧</a></li>
-					<li><a href="/progress">承認状況一覧</a></li>
+					<li th:if="${#authentication.principal.positionId == 1}"><a href="/make">稟議書作成</a></li>
+					<li th:if="${#authentication.principal.positionId != 1}"><a href="/list">未承認一覧</a></li>
+					<li th:if="${#authentication.principal.positionId == 1}"><a href="/progress">承認状況一覧</a></li>
+					<li></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 	      			<li><a href=""><span class="glyphicon glyphicon-user"></span> <span sec:authentication="name"></span></a></li>
