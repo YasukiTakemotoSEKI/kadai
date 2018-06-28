@@ -41,6 +41,10 @@ public class AppflowService {
 		
 	}
 	
+	public List<Appflow> findByAppIdAndAppflowFlg(Integer appId,boolean appflowFlg){
+		return appflowRepository.findByAppIdAndAppflowFlg(appId,appflowFlg);
+	}
+	
 	
 
 }

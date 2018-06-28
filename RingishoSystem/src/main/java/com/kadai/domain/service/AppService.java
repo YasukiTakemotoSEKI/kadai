@@ -82,6 +82,19 @@ public class AppService {
 		return app;
 		
 	}
+	/**
+	 * 承認済みかどうかを返す。
+	 * @param app
+	 * @return boolean true：承認済み　false:未承認
+	 */
+	public boolean checkApproval(App app) {
+		boolean checkFlg=false;
+		if (appflowservice.findByAppIdAndAppflowFlg(app.getAppId(), true).isEmpty()==true){
+			checkFlg=true;
+		}
+//		System.out.println(appflowservice.findByAppIdAndAppflowFlg(app.getAppId(), true));
+		return checkFlg;
+	}
 	
 	public List<App> IncompleteList(Employee employee) {
 		// employeeのposition確保

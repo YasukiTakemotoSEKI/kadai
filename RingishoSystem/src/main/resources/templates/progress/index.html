@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout}">
+<head>
+<title>稟議書システム</title>
+<meta charset="UTF-8">
+</head>
+<body>
+	<section layout:fragment="content">
+		<h1>承認状況一覧</h1>
+		
+		<div class="alert alert-success" role="alert" th:if="${success_message}" th:text="${success_message}">
+			validation error
+		</div>
+		
+		<table class="table">
+			<tr>
+				<th>ID</th>
+				<th>申請者名</th>
+				<th>件名</th>
+				<th>承認状況</th>
+				<th>申請日</th>
+				<th>処理</th>
+			</tr>
+			
+			<tr th:each="app : ${apps}">
+				<td th:text="${app.appId}"></td>
+				<td th:text="${app.employee.employeeName}"></td>
+				<td th:text="${app.appSubject}"></td>
+				<td th:switch="${app.appFlg}">
+					<div th:case="TRUE" ><ul>承認済み</ul></div>
+					<div th:case="FALSE" ><ul>却下</ul></div>
+					<div th:case="*" >
+						<ul th:each="af : ${app.appflow}">
+							<li>
+								<div th:text="(${af.getPosition().getPositionName()}) + '：' + (${af.getAppflowFlg() == false} ? '承認済み' : '未承認')"></div>
+							</li>
+						</ul>
+					</div>
+				</td>
+				<td th:text="${app.appStartDate}"></td>
+				<td>
+					<p><a th:href="@{/progress/view/{appId}/(appId=${app.appId})}">申請内容確認</a></p>
+				</td>
+			</tr>
+		
+		</table>
+		
+	</section>
+
+</body>
+</html>

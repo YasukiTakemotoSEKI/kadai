@@ -8,4 +8,5 @@ import com.kadai.domain.entity.Appflow;
 
 public interface AppflowRepository extends JpaRepository<Appflow, Integer> {
 	public List<Appflow> findByAppIdAndPositionIdAndAppflowFlg(int appId,int positionId,boolean appflowFlg);
+	public List<Appflow> findByAppIdAndAppflowFlg(int appId,boolean appflowFlg);
 }
