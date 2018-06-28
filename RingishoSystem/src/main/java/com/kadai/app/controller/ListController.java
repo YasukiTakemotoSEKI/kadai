@@ -38,11 +38,19 @@ public class ListController {
 	}
 	
 	@RequestMapping("/list/view/{appId}")
-	public ModelAndView view(@PathVariable("appId") Integer appId) {
+	public ModelAndView view(@PathVariable("appId") Integer appId, Principal principal) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/list/view");
 		
+		//ユーザー情報取得
+		Authentication auth = (Authentication)principal;
+		Employee employee = (Employee)auth.getPrincipal();
+		
 		//所有する申請データか確認
+		if(appservice.IncompleteList(employee).isEmpty()) {
+			mav.setViewName("/error/error");
+			return mav;
+		}
 		
 		//データ表示
 		App app = appservice.findOne(appId);
@@ -61,6 +69,10 @@ public class ListController {
 		Employee employee = (Employee)auth.getPrincipal();
 		
 		//所有する申請データか確認
+		if(appservice.IncompleteList(employee).isEmpty()) {
+			mav.setViewName("/error/error");
+			return mav;
+		}
 		
 		//承認処理
 		appservice.approval(appId, employee.getPositionId());
@@ -84,6 +96,10 @@ public class ListController {
 		Employee employee = (Employee)auth.getPrincipal();
 		
 		//所有する申請データか確認
+		if(appservice.IncompleteList(employee).isEmpty()) {
+			mav.setViewName("/error/error");
+			return mav;
+		}
 		
 		//却下処理
 		appservice.dismissal(appId, employee.getPositionId());
