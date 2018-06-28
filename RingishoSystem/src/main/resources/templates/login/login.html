@@ -7,6 +7,7 @@
 </head>
 	<body>
 		<section layout:fragment="content">
+			<h1>ログイン</h1>
 		    <div th:if="${param.error}">
 		      	ユーザー名、またはパスワードが違います。
 		    </div>
@@ -26,6 +27,11 @@
 					<button type="submit" class="btn btn-primary">ログイン</button>
 				</div>
 		    </form>
+		    <h2>課題説明用</h2>
+		    <p>■一般社員アカウント<br>hiraa@eigyou1</p>
+		    <p>■課長権限社員アカウント<br>katyoua@eigyou1</p>
+		    <p>■部長権限社員アカウント<br>butyou@eigyou</p>
+		    
 		</section>
 	</body>
 </html>
