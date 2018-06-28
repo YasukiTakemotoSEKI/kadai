@@ -154,16 +154,13 @@ public class AppService {
 		// 申請金額（appPrice）が閾値（PriceValue）より低ければpriceId取得
 		int priceId = 0;
 		for (Price p : priceTableAll) {
-			if (appPrice < p.getPriceValue()) {
+			if (appPrice <= p.getPriceValue()) {
 				priceId = p.getPriceId();
 				break;
 			}
 		}
 		app.setPriceId(priceId);
 		create(app);
-
-		// 承認者データの取得
-		Employee applicant = employeeservice.findOne(app.getEmployeeId());
 
 		// priceIdごとに承認フロー(flow)レコード呼び出し・(appflow)のレコード作成。
 		List<Flow> flowTableAll = new ArrayList<Flow>(flowservice.findByPriceId(priceId));

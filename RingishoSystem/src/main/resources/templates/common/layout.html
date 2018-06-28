@@ -23,13 +23,17 @@
 				</button>
 				<a class="navbar-brand" href="/home">稟議書システム</a>
 			</div>
-			<div id="navbar" class="collapse navbar-collapse">
+			<div id="navbar" class="collapse navbar-collapse" sec:authorize="isAuthenticated()">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="/home">Home</a></li>
+					<li><a href="/home">Home</a></li>
 					<li><a href="/make">作成</a></li>
 					<li><a href="/list">未承認一覧</a></li>
-					<li><a href="/logout">ログアウト</a></li>
+					<li><a href="/progress">承認状況一覧</a></li>
 				</ul>
+				<ul class="nav navbar-nav navbar-right">
+	      			<li><a href=""><span class="glyphicon glyphicon-user"></span> <span sec:authentication="name"></span></a></li>
+	      			<li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> ログアウト</a></li>
+	    		</ul>
 			</div>
 			<!--/.nav-collapse -->
 		</div>
