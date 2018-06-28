@@ -106,12 +106,15 @@ create table IF NOT EXISTS app (
     app_end_date varchar(255)
 );
 
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (1,4,1,1,2,'進行中','テスト件名','テスト内容',50000,'テスト添付書類','テストコメント','2018/6/26 17:08','null');
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (2,4,1,1,2,'却下','テスト件名２','テスト内容２',20000000,'テスト添付書類','テストコメント','2018/6/26 17:09','null');
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (3,5,1,1,2,'承認済','テスト件名３','テスト内容',500000,'テスト添付書類','テストコメント','2018/6/26 17:09','null');
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (4,5,1,1,2,'進行中','テストデータ１','テスト内容',500000,'テスト添付','テストコメント','2018/06/26 17:28:59','null');
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (5,5,1,1,2,'却下','テストデータ２','テスト内容',9999,'テスト添付書類','テストコメント','2018/06/26 17:29:24','null');
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (6,5,1,1,2,'進行中','テストデータ３','テスト内容',500000000,'テスト添付書類','テストコメント','2018/06/26 17:29:43','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (1,3,1,1,2,'進行中','営業課パソコン増設について','営業課では、営業事務課の顧客データを課の3台のパソコンで開き、日々の営業活動に活用しているが、現在、他の目的でのパソコン利用頻度も高くなってきたため、順番待ちで資料が遅れるなどの支障が発生しており、早急に解決が望まれる。この機会に事務部門と同様、1人1台体制になるよう、パソコンの増設をご承認いただきたい。',175000,'ＰＦＭ310カタログ','','2018/06/28 16:06:45','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (2,3,1,1,2,'進行中','テスト稟議書','テスト稟議書',1000000,'テストサンプル添付','テストコメント','2018/06/28 16:07:39','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (3,3,1,1,2,'進行中','テストサンプル件名','テスト内容',5000000,'サンプル添付','テストコメント','2018/06/28 16:08:07','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (4,3,1,1,1,'進行中','サンプル稟議書','テスト',9999,'添付サンプル','サンプルコメント','2018/06/28 16:08:41','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (5,7,1,2,1,'進行中','サンプル稟議書9999','サンプル内容',9999,'サンプル添付','サンプルコメント','2018/06/28 16:09:31','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (6,7,1,2,2,'進行中','サンプル稟議書10000','サンプル内容',10000,'サンプル添付','サンプルコメント','2018/06/28 16:09:54','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (7,12,2,1,1,'進行中','サンプル件名9999','サンプル内容',9999,'サンプル添付','サンプルコメント','2018/06/28 16:10:48','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (8,12,2,1,2,'進行中','サンプル10000','サンプル内容',10000,'添付書類','コメント','2018/06/28 16:11:14','null');
+
 
 create table IF NOT EXISTS appflow (
     appflow_id INTEGER primary key auto_increment,
@@ -122,23 +125,21 @@ create table IF NOT EXISTS appflow (
     appflow_order INTEGER
 );
 
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (1,1,2,2,TRUE,0);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (2,1,3,3,TRUE,1);
+INSERT INTO appflow (appflow_id, app_id, appflow_flg, appflow_order, flow_id, position_id) values (1,1,TRUE,0,2,2);
+INSERT INTO appflow (appflow_id, app_id, appflow_flg, appflow_order, flow_id, position_id) values (2,1,TRUE,1,3,3);
+INSERT INTO appflow (appflow_id, app_id, appflow_flg, appflow_order, flow_id, position_id) values (3,2,TRUE,0,2,2);
+INSERT INTO appflow (appflow_id, app_id, appflow_flg, appflow_order, flow_id, position_id) values (4,2,TRUE,1,3,3);
+INSERT INTO appflow (appflow_id, app_id, appflow_flg, appflow_order, flow_id, position_id) values (5,3,TRUE,0,2,2);
+INSERT INTO appflow (appflow_id, app_id, appflow_flg, appflow_order, flow_id, position_id) values (6,3,TRUE,1,3,3);
+INSERT INTO appflow (appflow_id, app_id, appflow_flg, appflow_order, flow_id, position_id) values (7,4,TRUE,0,1,2);
+INSERT INTO appflow (appflow_id, app_id, appflow_flg, appflow_order, flow_id, position_id) values (8,5,TRUE,0,1,2);
+INSERT INTO appflow (appflow_id, app_id, appflow_flg, appflow_order, flow_id, position_id) values (9,6,TRUE,0,2,2);
+INSERT INTO appflow (appflow_id, app_id, appflow_flg, appflow_order, flow_id, position_id) values (10,6,TRUE,1,3,3);
+INSERT INTO appflow (appflow_id, app_id, appflow_flg, appflow_order, flow_id, position_id) values (11,7,TRUE,0,1,2);
+INSERT INTO appflow (appflow_id, app_id, appflow_flg, appflow_order, flow_id, position_id) values (12,8,TRUE,0,2,2);
+INSERT INTO appflow (appflow_id, app_id, appflow_flg, appflow_order, flow_id, position_id) values (13,8,TRUE,1,3,3);
 
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (3,2,2,2,FALSE,0);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (4,2,3,3,TRUE,1);
 
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (5,3,2,2,FALSE,0);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (6,3,3,3,FALSE,1);
-
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (7,4,2,2,TRUE,0);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (8,4,3,3,TRUE,1);
-
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (9,5,2,2,TRUE,0);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (10,5,3,3,TRUE,1);
-
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (11,6,2,2,FALSE,0);
-INSERT INTO appflow (appflow_id, app_id, flow_id, position_id, appflow_flg, appflow_order) values (12,6,3,3,TRUE,1);
 
 
 

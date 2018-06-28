@@ -34,7 +34,7 @@
 						<div th:text="(${af.getPosition().getPositionName()}) + '：' + (${af.getAppflowFlg() == false} ? '承認済み' : '未承認')"></div>
 					</div>
 					<div th:if="${app.appApprovalName != null}" >
-						<p th:text="${'却下：'+app.appApprovalName}"></p>
+						<span th:text="${'却下：'+app.appApprovalName}"></span>
 					</div>
 				</td>
 				<td th:text="${app.appStartDate}"></td>
