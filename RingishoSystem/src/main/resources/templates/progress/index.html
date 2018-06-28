@@ -18,7 +18,8 @@
 				<th>ID</th>
 				<th>申請者名</th>
 				<th>件名</th>
-				<th>承認状況</th>
+				<th>承認ステータス</th>
+				<th>進行状況</th>
 				<th>申請日</th>
 				<th>処理</th>
 			</tr>
@@ -27,15 +28,13 @@
 				<td th:text="${app.appId}"></td>
 				<td th:text="${app.employee.employeeName}"></td>
 				<td th:text="${app.appSubject}"></td>
+				<td th:text="${app.appStatus}"></td>
 				<td th:switch="${app.appStatus}">
-					<div th:case="承認済" ><ul>承認済み</ul></div>
-					<div th:case="却下" ><ul>却下</ul></div>
-					<div th:case="進行中" >
-						<ul th:each="af : ${app.appflow}">
-							<li>
-								<div th:text="(${af.getPosition().getPositionName()}) + '：' + (${af.getAppflowFlg() == false} ? '承認済み' : '未承認')"></div>
-							</li>
-						</ul>
+					<div th:each="af : ${app.appflow}">
+						<div th:text="(${af.getPosition().getPositionName()}) + '：' + (${af.getAppflowFlg() == false} ? '承認済み' : '未承認')"></div>
+					</div>
+					<div th:if="${app.appApprovalName != null}" >
+						<p th:text="${'却下：'+app.appApprovalName}"></p>
 					</div>
 				</td>
 				<td th:text="${app.appStartDate}"></td>

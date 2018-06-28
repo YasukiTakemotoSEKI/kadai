@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="App")
@@ -57,6 +58,10 @@ public class App {
 	
 	@Column(name = "app_end_date")
 	private String appEndDate;
+	
+	//承認状況一覧で却下者格納で使用
+	@Transient
+	private String appApprovalName;
 	
 	//テーブル結合
 	@OneToMany
@@ -241,6 +246,14 @@ public class App {
 
 	public void setPrice(Price price) {
 		this.price = price;
+	}
+	
+	public String getAppApprovalName() {
+		return appApprovalName;
+	}
+
+	public void setAppApprovalName(String appApprovalName) {
+		this.appApprovalName = appApprovalName;
 	}
 	
 	@Override

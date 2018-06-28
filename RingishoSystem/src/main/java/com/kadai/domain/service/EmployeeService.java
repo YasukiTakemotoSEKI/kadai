@@ -39,6 +39,14 @@ public class EmployeeService implements UserDetailsService {
     public void delete(Integer employeeId){
     	employeeRepository.deleteById(employeeId);
     }
+    
+    public List<Employee> findByDepartmentIdAndPositionId(Integer departmentId, Integer positionId) {
+    	return employeeRepository.findByDepartmentIdAndPositionId(departmentId, positionId);
+    }
+    
+    public Employee findByDepartmentIdAndDivisionIdAndPositionId(Integer departmentId,Integer divisionId, Integer positionId) {
+    	return employeeRepository.findByDepartmentIdAndDivisionIdAndPositionId(departmentId, divisionId, positionId);
+    }
 
 	@Override
 	public UserDetails loadUserByUsername(String employee_name) throws UsernameNotFoundException {

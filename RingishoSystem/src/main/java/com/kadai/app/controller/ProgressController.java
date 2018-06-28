@@ -32,6 +32,9 @@ public class ProgressController {
 		//承認状況の取得
 		List<App> apps = new ArrayList<App>();
 		apps = appservice.ApprovalStatus(employee);
+		for(App a:apps) {
+			appservice.checkApproval(a);
+		}
 		mav.addObject("apps", apps);
 		return mav;
 	}

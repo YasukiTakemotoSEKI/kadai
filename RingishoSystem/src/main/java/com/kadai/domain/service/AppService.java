@@ -67,18 +67,13 @@ public class AppService {
 	public List<App> findByEmployeeId(int employeeId) {
 		return appRepository.findByEmployeeId(employeeId);
 	}
-
-	// public List<App> findByAppId(App app) {
-	// return app;
-	//
-	// }
+	
 	public List<App> findByDepartmentIdAndAppStatus(Integer departmentId, String appStatus) {
 		return appRepository.findByDepartmentIdAndAppStatus(departmentId, appStatus);
 	}
 
 	public List<App> ApprovalStatus(Employee employee) {
 		List<App> app = new ArrayList<App>(findByEmployeeId(employee.getEmployeeId()));
-		// System.out.println(app);
 		return app;
 	}
 
@@ -88,26 +83,42 @@ public class AppService {
 	 * @param app
 	 * @return boolean true：承認済み false:未承認
 	 */
-	public boolean checkApproval(App app) {
-		boolean checkFlg = false;
-		if (appflowservice.findByAppIdAndAppflowFlg(app.getAppId(), true).isEmpty() == true) {
-			checkFlg = true;
+	public void checkApproval(App app) {
+		int positionId = 0;
+		int departmentId = 0;
+		int divisionId = 0;
+		List<Employee> employee = new ArrayList<Employee>();
+		Employee employee2 = new Employee();
+		if (app.getAppStatus().equals("却下")) {
+			for (Appflow af : app.getAppflow()) {
+				if (af.getAppflowFlg() == true) {
+					positionId = af.getPositionId();
+					departmentId = app.getDepartmentId();
+					divisionId = app.getDivisionId();
+					break;
+				}
+			}
+			employee = employeeservice.findByDepartmentIdAndPositionId(departmentId, positionId);
+			if (employee.size() > 1) {
+				employee2 = employeeservice.findByDepartmentIdAndDivisionIdAndPositionId(departmentId, divisionId,
+						positionId);
+			} else {
+				employee2 = employee.get(0);
+			}
+			app.setAppApprovalName(employee2.getEmployeeName());
 		}
-		// System.out.println(appflowservice.findByAppIdAndAppflowFlg(app.getAppId(),
-		// true));
-		return checkFlg;
 	}
 
 	public List<App> IncompleteList(Employee employee) {
 		// employeeのposition確保
-		int positionId = employee.getPositionId();
 		// appからdivisionとdepartmentでappを絞る。すでに承認取り下げの案件は排除。
 		// devisionが0なら部長。
 		List<App> app = new ArrayList<App>();
 		if (employee.getDivisionId() == 0) {
 			app = findByDepartmentIdAndAppStatus(employee.getDepartmentId(), "進行中");
 		} else {
-			app = findByDepartmentIdAndDivisionIdAndAppStatus(employee.getDepartmentId(), employee.getDivisionId(),"進行中");
+			app = findByDepartmentIdAndDivisionIdAndAppStatus(employee.getDepartmentId(), employee.getDivisionId(),
+					"進行中");
 		}
 		Iterator<App> test = app.iterator();
 		boolean checkFlg = true;
