@@ -80,7 +80,7 @@ public class MakeController {
 		app.setEmployeeId(sessionAppForm.getEmployeeId());
 		app.setDepartmentId(sessionAppForm.getDepartmentId());
 		app.setDivisionId(sessionAppForm.getDivisionId());
-		app.setAppFlg(true);
+		app.setAppStatus("進行中");
 		app.setAppSubject(sessionAppForm.getAppSubject());
 		app.setAppContent(sessionAppForm.getAppContent());
 		app.setAppPrice(Integer.parseInt(sessionAppForm.getAppPrice()));

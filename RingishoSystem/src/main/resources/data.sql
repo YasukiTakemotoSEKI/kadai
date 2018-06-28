@@ -102,7 +102,7 @@ create table IF NOT EXISTS app (
     department_id INTEGER,
     division_id INTEGER,
     price_id INTEGER,
-    app_flg BOOLEAN,
+    app_status ENUM('進行中','承認済','却下'),
     app_subject varchar(255),
     app_content CLOB,
     app_price INTEGER,
@@ -112,12 +112,12 @@ create table IF NOT EXISTS app (
     app_end_date varchar(255)
 );
 
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (1,4,1,1,2,TRUE,'テスト件名','テスト内容',50000,'テスト添付書類','テストコメント','2018/6/26 17:08','null');
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (2,4,1,1,2,FALSE,'テスト件名２','テスト内容２',20000000,'テスト添付書類','テストコメント','2018/6/26 17:09','null');
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (3,5,1,1,2,TRUE,'テスト件名３','テスト内容',500000,'テスト添付書類','テストコメント','2018/6/26 17:09','null');
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (4,5,1,1,2,TRUE,'テストデータ１','テスト内容',500000,'テスト添付','テストコメント','2018/06/26 17:28:59','null');
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (5,5,1,1,2,FALSE,'テストデータ２','テスト内容',9999,'テスト添付書類','テストコメント','2018/06/26 17:29:24','null');
-insert into app ( app_id, employee_id, department_id, division_id, price_id, app_flg, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (6,5,1,1,2,TRUE,'テストデータ３','テスト内容',500000000,'テスト添付書類','テストコメント','2018/06/26 17:29:43','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (1,4,1,1,2,'進行中','テスト件名','テスト内容',50000,'テスト添付書類','テストコメント','2018/6/26 17:08','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (2,4,1,1,2,'却下','テスト件名２','テスト内容２',20000000,'テスト添付書類','テストコメント','2018/6/26 17:09','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (3,5,1,1,2,'承認済','テスト件名３','テスト内容',500000,'テスト添付書類','テストコメント','2018/6/26 17:09','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (4,5,1,1,2,'進行中','テストデータ１','テスト内容',500000,'テスト添付','テストコメント','2018/06/26 17:28:59','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (5,5,1,1,2,'却下','テストデータ２','テスト内容',9999,'テスト添付書類','テストコメント','2018/06/26 17:29:24','null');
+insert into app ( app_id, employee_id, department_id, division_id, price_id, app_status, app_subject, app_content, app_price, app_attachment, app_comment, app_start_date, app_end_date) values (6,5,1,1,2,'進行中','テストデータ３','テスト内容',500000000,'テスト添付書類','テストコメント','2018/06/26 17:29:43','null');
 
 create table IF NOT EXISTS appflow (
     appflow_id INTEGER primary key auto_increment,

@@ -27,10 +27,10 @@
 				<td th:text="${app.appId}"></td>
 				<td th:text="${app.employee.employeeName}"></td>
 				<td th:text="${app.appSubject}"></td>
-				<td th:switch="${app.appFlg}">
-					<div th:case="TRUE" ><ul>承認済み</ul></div>
-					<div th:case="FALSE" ><ul>却下</ul></div>
-					<div th:case="*" >
+				<td th:switch="${app.appStatus}">
+					<div th:case="承認済" ><ul>承認済み</ul></div>
+					<div th:case="却下" ><ul>却下</ul></div>
+					<div th:case="進行中" >
 						<ul th:each="af : ${app.appflow}">
 							<li>
 								<div th:text="(${af.getPosition().getPositionName()}) + '：' + (${af.getAppflowFlg() == false} ? '承認済み' : '未承認')"></div>

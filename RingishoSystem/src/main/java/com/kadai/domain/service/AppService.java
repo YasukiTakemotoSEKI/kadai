@@ -58,89 +58,69 @@ public class AppService {
 	public void delete(Integer app) {
 		appRepository.deleteById(app);
 	}
-	
-	public List<App> findByDepartmentIdAndDivisionIdAndAppFlg(Integer departmentId,Integer divisionId, boolean appFlg){
-		return appRepository.findByDepartmentIdAndDivisionIdAndAppFlg(departmentId, divisionId, appFlg);
-	}
-	
-	public List<App> findByEmployeeId(int employeeId){
-		return appRepository.findByEmployeeId(employeeId);
-	}
-	
-//	public List<App> findByAppId(App app) {
-//		return app;
-//		
-//	}
-	public List<App> findByDepartmentIdAndAppFlg(Integer departmentId, boolean appFlg) {
-		return appRepository.findByDepartmentIdAndAppFlg(departmentId, appFlg);
-		
+
+	public List<App> findByDepartmentIdAndDivisionIdAndAppStatus(Integer departmentId, Integer divisionId,
+			String appStatus) {
+		return appRepository.findByDepartmentIdAndDivisionIdAndAppStatus(departmentId, divisionId, appStatus);
 	}
 
-	public List<App> ApprovalStatus(Employee employee){
-		List<App> app = new ArrayList<App>(findByEmployeeId(employee.getEmployeeId()));
-//		System.out.println(app);
-		return app;
-		
+	public List<App> findByEmployeeId(int employeeId) {
+		return appRepository.findByEmployeeId(employeeId);
 	}
+
+	// public List<App> findByAppId(App app) {
+	// return app;
+	//
+	// }
+	public List<App> findByDepartmentIdAndAppStatus(Integer departmentId, String appStatus) {
+		return appRepository.findByDepartmentIdAndAppStatus(departmentId, appStatus);
+	}
+
+	public List<App> ApprovalStatus(Employee employee) {
+		List<App> app = new ArrayList<App>(findByEmployeeId(employee.getEmployeeId()));
+		// System.out.println(app);
+		return app;
+	}
+
 	/**
 	 * 承認済みかどうかを返す。
+	 * 
 	 * @param app
-	 * @return boolean true：承認済み　false:未承認
+	 * @return boolean true：承認済み false:未承認
 	 */
 	public boolean checkApproval(App app) {
-		boolean checkFlg=false;
-		if (appflowservice.findByAppIdAndAppflowFlg(app.getAppId(), true).isEmpty()==true){
-			checkFlg=true;
+		boolean checkFlg = false;
+		if (appflowservice.findByAppIdAndAppflowFlg(app.getAppId(), true).isEmpty() == true) {
+			checkFlg = true;
 		}
-//		System.out.println(appflowservice.findByAppIdAndAppflowFlg(app.getAppId(), true));
+		// System.out.println(appflowservice.findByAppIdAndAppflowFlg(app.getAppId(),
+		// true));
 		return checkFlg;
 	}
-	
+
 	public List<App> IncompleteList(Employee employee) {
 		// employeeのposition確保
 		int positionId = employee.getPositionId();
 		// appからdivisionとdepartmentでappを絞る。すでに承認取り下げの案件は排除。
 		// devisionが0なら部長。
 		List<App> app = new ArrayList<App>();
-		if(employee.getDivisionId() == 0){
-			app = findByDepartmentIdAndAppFlg(employee.getDepartmentId(), true);
-		}else {
-			app = findByDepartmentIdAndDivisionIdAndAppFlg(employee.getDepartmentId(),employee.getDivisionId(), true);
+		if (employee.getDivisionId() == 0) {
+			app = findByDepartmentIdAndAppStatus(employee.getDepartmentId(), "進行中");
+		} else {
+			app = findByDepartmentIdAndDivisionIdAndAppStatus(employee.getDepartmentId(), employee.getDivisionId(),
+					"進行中");
 		}
-		
 		Iterator<App> test = app.iterator();
-		
 		boolean checkFlg = true;
-		while(test.hasNext()) {
+		while (test.hasNext()) {
 			App a = test.next();
-			
-			for(Appflow af : a.getAppflow()) {
-				
-				//appflowで絞ったリストの作成。
-				
-				//自分の役職より低い承認者の承認がされていなければ無効
-				if( ( employee.getPositionId() > af.getPositionId() ) && ( af.getAppflowFlg() == true ) ) {
-					checkFlg = false;
-				}
-				//自分の役職と同じで、すでに承認されていれば無効（承認済み）
-				if( ( employee.getPositionId() == af.getPositionId() ) && ( af.getAppflowFlg() == false ) ) {
-					checkFlg = false;
-				}
-				//社員の場合は承認権限無し。
-				if (employee.getPositionId()==1) {
-					checkFlg = false;
-				}
-
-			}
-			
-			if( checkFlg == false  ) {
+			// appflowで絞ったリストの作成。
+			checkFlg = checkApproval(employee.getEmployeeId(), a.getAppId());
+			if (checkFlg == false) {
 				test.remove();
 				checkFlg = true;
 			}
-			
 		}
-		
-		
 		return app;
 	}
 
@@ -175,35 +155,59 @@ public class AppService {
 			appflowservice.create(appflow);
 		}
 	}
-	
+
 	public void approval(int appId, int positionId) {
-		//該当のレコードを取得
+		// 該当のレコードを取得
 		App app = findOne(appId);
-		//Appflowテーブルを更新
+		// Appflowテーブルを更新
 		boolean allApprobalFlg = false;
-		for(Appflow af : app.getAppflow()) {
-			//該当の行を更新する
-			if( positionId == af.getPositionId() ) {
+		for (Appflow af : app.getAppflow()) {
+			// 該当の行を更新する
+			if (positionId == af.getPositionId()) {
 				af.setAppflowFlg(false);
 				appflowservice.update(af);
 			}
-			if(af.getAppflowFlg() == false) {
+			if (af.getAppflowFlg() == false) {
 				allApprobalFlg = true;
 			} else {
 				allApprobalFlg = false;
 			}
 		}
-		//すべての承認を完了していればAppテーブルを更新
-		if(allApprobalFlg) {
-			app.setAppFlg(false);
+		// すべての承認を完了していればAppテーブルを更新
+		if (allApprobalFlg) {
+			app.setAppStatus("承認済");
+			update(app);
+		} else {
+			app.setAppStatus("進行中");
 			update(app);
 		}
 	}
-	
+
 	public void dismissal(int appId, int positionId) {
-		//Appテーブルを更新（AppFlowは変更しない）
+		// Appテーブルを更新（AppFlowは変更しない）
 		App app = findOne(appId);
-		app.setAppFlg(false);
+		app.setAppStatus("却下");
 		update(app);
+	}
+
+	public boolean checkApproval(int employeeId, int appId) {
+		Employee employee = employeeservice.findOne(employeeId);
+		App app = findOne(appId);
+		boolean flg = true;
+		for (Appflow af : app.getAppflow()) {
+			// 自分の役職より低い承認者の承認がされていなければ無効
+			if ((employee.getPositionId() > af.getPositionId()) && (af.getAppflowFlg() == true)) {
+				flg = false;
+			}
+			// 自分の役職と同じで、すでに承認されていれば無効（承認済み）
+			if ((employee.getPositionId() == af.getPositionId()) && (af.getAppflowFlg() == false)) {
+				flg = false;
+			}
+			// 社員の場合は承認権限無し。
+			if (employee.getPositionId() == 1) {
+				flg = false;
+			}
+		}
+		return flg;
 	}
 }

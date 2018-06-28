@@ -34,8 +34,8 @@ public class App {
 	@Column(name = "price_id")
 	private int priceId;
 	
-	@Column(name = "app_flg")
-	private boolean appFlg;
+	@Column(name = "app_status")
+	private String appStatus;
 	
 	@Column(name = "app_subject")
 	private String appSubject;
@@ -82,14 +82,14 @@ public class App {
 	public App() {
 	}
 	
-	public App(int employeeId, int departmentId, int divisionId, int priceId, boolean appFlg, String appSubject, String appContent, int appPrice, String appAttachment, String appComment, String appStartDate, String appEndDate) {
+	public App(int employeeId, int departmentId, int divisionId, int priceId, String appStatus, String appSubject, String appContent, int appPrice, String appAttachment, String appComment, String appStartDate, String appEndDate) {
 		this();
 //		this.appId = appId;
 		this.employeeId = employeeId;
 		this.departmentId = departmentId;
 		this.divisionId = divisionId;
 		this.priceId = priceId;
-		this.appFlg = appFlg;
+		this.appStatus = appStatus;
 		this.appSubject = appSubject;
 		this.appContent = appContent;
 		this.appPrice = appPrice;
@@ -139,12 +139,12 @@ public class App {
 		this.divisionId = divisionId;
 	}
 	
-	public boolean getAppFlg() {	
-		return appFlg;
+	public String getAppStatus() {	
+		return appStatus;
 	}
 		
-	public void setAppFlg(boolean appFlg) {	
-		this.appFlg = appFlg;
+	public void setAppStatus(String appStatus) {	
+		this.appStatus = appStatus;
 	}
 	
 	public String getAppSubject() {
